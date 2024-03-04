@@ -63,10 +63,10 @@ export const sections = [
 
 export const listesActions = [
   {
-    title: "ENTRETIEN",
-    subTitle: "",
-    photo: { url: "Rectangle_8.png", alt: "" },
-    actions: [""],
+    title: "CHANGEMENT D'ENSEIGNE",
+    subTitle: "Ce n'est plus Pulsat, mais ça reste Pascal CHANTREL!",
+    photo: { url: "cartevisitepoursite.png", alt: "" },
+    actions: [],
   },
  
 ];

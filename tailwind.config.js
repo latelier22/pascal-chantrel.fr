@@ -25,6 +25,10 @@ module.exports = {
           800: '#bd8509',
           900: '#976503',
         },
+        bluechantrel:
+        {
+          950: '#161623'
+        }
       },
       keyframes: () => ({
         slideRight: {

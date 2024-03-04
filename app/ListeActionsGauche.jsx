@@ -8,7 +8,7 @@ const ListeActionsGauche = ({
   photo,
   gauche,
   children,
-  bgColor
+  bgColor,
 }) => {
   useEffect(() => {
     const init = async () => {
@@ -21,26 +21,30 @@ const ListeActionsGauche = ({
   console.log(photo);
 
   return (
-<div className={`container mx-auto px-5 py-2 lg:px-32 lg:pt-12 ${gauche ? "animate-slideLeft" : "animate-slideRight"}`}>
-  <div className={`flex flex-col items-center ${gauche ? bgColor : ""}`}>
-    <div className="flex flex-col md:flex-row align-middle items-center">
-      <img
-        alt={photo.alt}
-        className={
-          gauche
-            ? "hidden"
-            : "block md:h-1/3 md:w-1/3 object-cover rounded-lg"
-        }
-        src={`images/${photo.url}`}
-      />
+    <div
+      className={`container mx-auto px-5 my-20 py-10 lg:px-32 bg-gradient-to-r from-bluechantrel-950 via-bluechantrel-950 to-blue-800 lg:pt-12 rounded-3xl ${
+        gauche ? "animate-slideLeft" : "animate-slideRight"
+      }`}
+    >
+      <div className={`flex flex-col items-center`}>
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <img
+            alt={photo.alt}
+            className={
+              gauche
+                ? "hidden"
+                : "block md:h-1/3 md:w-1/3 object-cover rounded-lg"
+            }
+            src={`images/${photo.url}`}
+          />
           <section className="container mx-auto mt-8 p-4">
             <h1
-              className="text-4xl font-bold text-center mb-4"
+              className="text-4xl font-bold text-center mb-8 text-white"
               style={{ fontFamily: "knicknack-font" }}
             >
               {listeTitle}
             </h1>
-            <h2 className="text-2xl font-bold mb-2">{listeSubTitle}</h2>
+            <h2 className="text-2xl  text-sky-200 text-center marker:font-bold my-2">{listeSubTitle}</h2>
             {actions.length > 0 && (
               <ul className="list-disc ml-8">
                 {actions.map((action, index) => (

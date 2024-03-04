@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-sky-600 text-center text-white dark:bg-neutral-900 dark:text-gold-400">
+    <footer className="bg-bluechantrel-950 text-center text-white dark:bg-neutral-900 dark:text-gold-400">
       <div className="flex items-center justify-center border-neutral-200 p-6 dark:border-neutral-500 lg:justify-end">
         <div className="mr-12 hidden md:block">
           <span>Restons en contact sur les réseaux sociaux</span>
@@ -42,7 +42,7 @@ const Footer = () => {
 
       <div className="mx-6 pt-8 pb-4 text-center">
         <div className="mb-6">
-          <Title title = "Besoin d'un travail de peinture de qualité ?" />
+          <Title title = "Besoin d'un dépannage de qualité en urgence?" />
           <p className="mb-4 text-white">Contactez-nous!</p>
           <p className="mb-4 text-white">
             Nous intervenons tout autour de Loudéac, dans les délais les plus brefs
@@ -51,7 +51,7 @@ const Footer = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 mb-4">
           <div className="mb-6">
-            <h5 className="mb-2.5 font-bold text-gold-800 dark:text-gold-800">
+            <h5 className="mb-2.5 font-bold text-white dark:text-white">
               Qui sommes-nous?
             </h5>
 
@@ -62,7 +62,7 @@ const Footer = () => {
               <li>{site.portable} / {site.fixe}</li>
               <li>{site.email}</li>
               <br/>
-              <li className=" text-gold-800">N° de SIRET {site.SIRET}</li>
+              <li className=" text-white">N° de SIRET {site.SIRET}</li>
             </ul>
           </div>
 
@@ -70,11 +70,11 @@ const Footer = () => {
             <h5 className="mb-2.5 font-bold text-yellow-500 dark:text-neutral-200">
               {/* DEVIS GRATUIT ! */}
             </h5>
-            <img src="images/picto-devis-gratuit.png" className="h-60  " alt="..." />
+            <img src="images/facade.png" className="h-60  " alt="..." />
           </div>
 
           <div className="mb-6">
-            <h5 className="mb-2.5 font-bold  text-white  dark:text-gold-800">
+            <h5 className="mb-2.5 font-bold  text-white  dark:text-white">
               Nos services
             </h5>
 
@@ -83,7 +83,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={menuItem.route}
-                    className=" text-white hover:dark:text-gold-800 dark:text-gold-200"
+                    className=" text-white hover:dark:text-white dark:text-gold-200"
                   >
                     {menuItem.label}
                   </a>

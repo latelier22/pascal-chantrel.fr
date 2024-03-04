@@ -29,7 +29,7 @@ export default function RootLayout({
         <meta name="description" content={description} />
         {/* Add other meta tags if needed */}
       </head>
-      <body className={`${inter.className} bg-neutral-900`}>
+      <body className={`${inter.className} bg-sky-200 text-black`}>
         {children}
       </body>
     </html>

@@ -5,7 +5,8 @@ import HeaderSimple from "./headerSimple";
 import Footer from "./Footer";
 import Cards from "./Cards";
 import Section from "./Section";
-import {cards, sections} from "./site"
+import {cards, sections,listesActions} from "./site"
+import ListeActionsGauche from "./ListeActionsGauche"
 
 const Home = () => {
   // Dynamic metadata for the home page
@@ -22,14 +23,16 @@ const Home = () => {
       <Navbar />
       <HeaderSimple photos={photos} title={pageTitle}/>
       {/* <Pictos /> */}
-      <Section section={sections[0]} />
+      {/* <Section section={sections[0]} /> */}
+      <ListeActionsGauche  actions={listesActions[0].actions} listeTitle={listesActions[0].title} listeSubTitle={listesActions[0].subTitle} photo={listesActions[0].photo} gauche={false} bgColor="bg-white"/>
 
 
-      <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
+
+      {/* <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
         <Cards cards={cards} buttonColor={backgroundColor} />
-      </div>
+      </div> */}
 
-      <Section section={sections[1]} />
+      {/* <Section section={sections[1]} /> */}
       
       {/* <div className="bg-white dark:bg-neutral-900 dark:text-gold-500">
         <Cards cards={cards2} buttonColor={backgroundColor} />
