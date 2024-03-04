@@ -44,9 +44,8 @@ export async function POST(request) {
 	
 
     try {
-		//console.log(sendGridMail)
+		
         const {data} = await sgMail.send(sendGridMail);
-		console.log(sendGridMail)
         return NextResponse.json({
             data
         });
