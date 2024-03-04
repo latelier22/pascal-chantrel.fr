@@ -12,6 +12,7 @@ export const site = {
   email: "contact@pascal-chantrel.fr",
   logo: { url: "images/logo-barre-du-haut.png", alt: "logo Pascal CHANTREL" },
   Logo: { url: "images/logo-banniere.png", alt: "logo Pascal CHANTREL" },
+  facebook: "https://www.facebook.com/profile.php?id=61556770660190"
 };
 
 export const menuItems = [
