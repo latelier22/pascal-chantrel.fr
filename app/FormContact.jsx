@@ -50,7 +50,7 @@ const FormContact = () => {
   return (
     <>
       <div className ="text-black pt-32" style={{ textAlign: "center" }}>
-        <h1 className="text-white">FORMULAIRE DE CONTACT:</h1>
+        <h1 className="text-black">FORMULAIRE DE CONTACT:</h1>
 
         {/* Formulaire */}
         <form
@@ -58,7 +58,7 @@ const FormContact = () => {
           onSubmit={handleSubmit(onSubmitHandler)}
         >
           {isSended && (
-            <p className="text-white">
+            <p className="text-black">
               Votre message a bien été envoyé avec succès, nous vous répondrons rapidement.
             </p>
           )}
@@ -144,7 +144,7 @@ const FormContact = () => {
             }}
           >
             {!isLoading && (
-              <button className="text-white" style={{ padding: "5px 10px" }}>Envoyer</button>
+              <button className="text-black" style={{ padding: "5px 10px" }}>Envoyer</button>
             )}
           </div>
         </form>
