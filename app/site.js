@@ -17,6 +17,7 @@ export const site = {
 
 export const menuItems = [
   { label: "Accueil", route: "/" },
+  { label: "Catalogue", route: "/catalogue" },
   { label: "Contact", route: "/contact" },
 ];
 
@@ -72,8 +73,8 @@ export const listesActions = [
 ];
 
 export const Pages = {
-  entretien: {
-    title: "Entretien",
+  catalogue: {
+    title: "Catalogue",
     description: "",
     photos: [
       { url: "entretien-1.png", alt: "gallery" },
