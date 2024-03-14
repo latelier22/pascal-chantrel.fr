@@ -24,6 +24,7 @@ async function Catalogue() {
       
       <ProductCards products = {products}/>
 
+
       <Footer />
     </RootLayout>
   );
