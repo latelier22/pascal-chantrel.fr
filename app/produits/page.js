@@ -25,7 +25,7 @@ async function Catalogue() {
       <HeaderSimple photos={page.photos} title={page.title}/>
       
       <ProductCategoriesList products = {products}/>
-      {/* <CategoriesCards products = {products}/> */}
+      
       <ProductCards products = {products}/>
 
 

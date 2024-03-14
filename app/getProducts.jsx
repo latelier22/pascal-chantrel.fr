@@ -21,8 +21,7 @@ async function getProducts() {
     products.push(product);
   }
 
-console.log(products)
-  
+  console.log("PRODUCTS", products)
   // Lire le fichier CSV
   
   return products;

@@ -18,7 +18,7 @@ const ListeActionsGauche = ({
     init();
   }, []);
 
-  console.log(photo);
+
 
   return (
     <div
