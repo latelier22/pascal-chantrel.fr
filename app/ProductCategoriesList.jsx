@@ -6,7 +6,9 @@ const ProductCategoriesList = ({ products }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Catégories</h2>
+      <Link href={`/catalogue`}>
+      <h2 className="text-2xl font-bold mb-4">Catalogue</h2>
+      </Link>
       <ul>
         {categoriesList.map((category) => (
           <li key={category.category_id} className="text-lg">
