@@ -148,7 +148,7 @@ export const Pages = {
     <ul className="list-disc pl-4">
         <li>Ramonage régulier des cheminées, poêles et chaudières.</li>
         <li>Nettoyage des conduits de fumée pour garantir leur bon fonctionnement.</li>
-        <li>Inspection des appareils de chauffage pour prévenir les risques d'incendie.</li>
+        <li>Inspection des appareils de chauffage pour prévenir les risques d&apos;incendie.</li>
     </ul>
 
     </>
@@ -162,10 +162,10 @@ export const Pages = {
           <>
 
     <h2>Lien avec les Assurances</h2>
-    <p>Nos services de ramonage sont en conformité avec les exigences des compagnies d'assurance, ce qui garantit la couverture en cas de sinistre.</p>
+    <p>Nos services de ramonage sont en conformité avec les exigences des compagnies d&apos;assurance, ce qui garantit la couverture en cas de sinistre.</p>
     <br/>
-    <h2>Types d'Appareils</h2>
-    <p>Nous intervenons sur divers types d'appareils :</p>
+    <h2>Types d&apos;Appareils</h2>
+    <p>Nous intervenons sur divers types d&apos;appareils :</p>
     <ul>
         <li>Cheminées traditionnelles</li>
         <li>Poêles à bois</li>
@@ -195,10 +195,10 @@ export const Pages = {
         <li>Ramonage professionnel et minutieux.</li>
         <li>Respect des normes de sécurité en vigueur.</li>
         <li>Intervention rapide et efficace.</li>
-        <li>Conseils personnalisés pour optimiser l'utilisation de vos appareils de chauffage.</li>
+        <li>Conseils personnalisés pour optimiser l&apos;utilisation de vos appareils de chauffage.</li>
     </ul>
 <br/>
-    <p>N'hésitez pas à nous contacter pour bénéficier de nos services de ramonage fiables et professionnels.</p>
+    <p>N&apos;hésitez pas à nous contacter pour bénéficier de nos services de ramonage fiables et professionnels.</p>
 </>
 
 
