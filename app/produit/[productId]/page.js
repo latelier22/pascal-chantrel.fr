@@ -72,7 +72,7 @@ async function Catalogue({ params }) {
   return (
     <RootLayout pageTitle={pageTitle} pageDescription={pageDescription}>
       <Navbar />
-      <HeaderSimple photos={page.photos} title={pageTitle} />
+      <HeaderSimple  title={pageTitle} />
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
         {/* Colonne de gauche pour la liste des catégories */}
