@@ -59,7 +59,7 @@ async function Catalogue({ params }) {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
         {/* Colonne de gauche pour la liste des catégories */}
         <div className="md:col-span-2">
-          <ProductCategoriesList products={products} />
+          <ProductCategoriesList products={products} category_id={categoryId} />
         </div>
 
         {/* Colonne centrale vide pour l'espace */}
