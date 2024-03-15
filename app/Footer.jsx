@@ -70,7 +70,7 @@ const Footer = () => {
             <h5 className="mb-2.5 font-bold text-yellow-500 dark:text-neutral-200">
               {/* DEVIS GRATUIT ! */}
             </h5>
-            <img src="images/facade.png" className="h-60  " alt="..." />
+            <img src="/images/facade.png" className="w-full" alt="..." />
           </div>
 
           <div className="mb-6">

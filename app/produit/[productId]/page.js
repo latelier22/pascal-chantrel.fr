@@ -5,7 +5,7 @@ import RootLayout from "../../layout";
 import HeaderSimple from "../../headerSimple";
 import { Pages } from "../../site";
 import getProducts from "../../getProducts";
-import ProductCards from "../../ProductCards";
+import ProductCard from "../../ProductCard";
 import ProductCategoriesList from "../../ProductCategoriesList";
 import getCategories from "../../getCategories";
 
@@ -35,7 +35,7 @@ const filterProductsByCategoryId = (products, categories, categoryId) => {
 };
 
 async function Catalogue({ params }) {
-  const categoryId = params.catId;
+  const productId = params.productId;
 
   
   const pageDescription =
@@ -43,13 +43,31 @@ async function Catalogue({ params }) {
   const page = Pages["catalogue"];
   const products = await getProducts();
   const categories = getCategories({ products });
-  const filterProducts = filterProductsByCategoryId(
-    products,
-    categories,
-    categoryId
-  );
-  const pageTitle = getCategoryNameFromId(categories, categoryId);
-  console.log("filter", filterProducts, "id=", categoryId);
+  // const filterProducts = filterProductsByCategoryId(
+  //   products,
+  //   categories,
+  //   categoryId
+  // );
+
+  // Recherche du produit par ID
+  const product = products.find(product => product.id === productId);
+
+  // "id",
+  // "ref_simple",
+  // "Désignation",
+  // "nom_marque",
+  // "Catégories",
+  // "cat1",
+  // "cat2",
+  // "cat3",
+  // "Prix public 1",
+  // "Stock final des 12 mois",
+  // "Date de création",
+  // "Date de mise à jour",
+  // "image-1"
+
+  const pageTitle = product['cat1'] + " " + product['ref_simple']
+  // console.log("filter", filterProducts, "id=", categoryId);
 
   return (
     <RootLayout pageTitle={pageTitle} pageDescription={pageDescription}>
@@ -63,12 +81,16 @@ async function Catalogue({ params }) {
         </div>
 
         {/* Colonne centrale vide pour l'espace */}
-        {/* <div className="hidden md:block md:col-span-1"></div> */}
+        <div className="hidden md:block md:col-span-1"></div>
 
         {/* Colonne de droite pour les cartes de catégories */}
-        <div className="md:col-span-9">
-          <ProductCards products={filterProducts} />
+        <div className="md:col-span-8 m-4">
+          <ProductCard product={product} />
         </div>
+
+         {/* Colonne centrale vide pour l'espace */}
+         <div className="hidden md:block md:col-span-1"></div>
+
       </div>
 
       <Footer />

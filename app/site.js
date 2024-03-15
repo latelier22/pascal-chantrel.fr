@@ -17,7 +17,9 @@ export const site = {
 
 export const menuItems = [
   { label: "Accueil", route: "/" },
-  { label: "Catalogue", route: "/catalogue" },
+  { label: "Electroménager", route: "/electromenager" },
+  { label: "Antennes TV", route: "/antennes-tv" },
+  { label: "Ramonage", route: "ramonage" },
   { label: "Contact", route: "/contact" },
 ];
 

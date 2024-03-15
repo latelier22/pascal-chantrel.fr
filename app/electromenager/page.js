@@ -31,7 +31,7 @@ async function Catalogue() {
         </div>
         
         {/* Colonne centrale vide pour l'espace */}
-        <div className="hidden md:block md:col-span-1"></div>
+        {/* <div className="hidden md:block md:col-span-1"></div> */}
 
         {/* Colonne de droite pour les cartes de catégories */}
         <div className="md:col-span-9">
