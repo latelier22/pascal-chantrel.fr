@@ -5,13 +5,8 @@ import { Suspense} from "react";
 import GetTaxons from '../../sylius/GetTaxons';
 import GetProductsByTaxonCode from "../../sylius/GetProductsByTaxonCode";
 import GetProductVariant from "../../sylius/GetProductVariant";
+import getTaxonsWithImages from "../../sylius/getTaxonsWithImages";
 import formatPrice from "../../Utils/formatPrice";
-
-
-
-
-
-
 
 async function MyPage ({ params }) {
   // Fonction pour obtenir le code à partir du slug dans les données des taxons
@@ -24,12 +19,19 @@ async function MyPage ({ params }) {
     return null;
   }
 
-        const taxons = await GetTaxons();
+        const taxons = await getTaxonsWithImages();
         const targetSlug = params.taxonSlug;
-        const taxonCode = getCodeFromSlug(taxons, targetSlug);
+
+        console.log("param", targetSlug)
+
+        const taxonCode = getCodeFromSlug(taxons, "categorie/" + targetSlug);
+        
+        console.log("taxonCode",taxonCode,taxons)
+
         const products = await GetProductsByTaxonCode(taxonCode);
 
-        //console.log("products",products)
+
+        console.log("products",products)
 
         // Fonction asynchrone pour obtenir le variant par défaut de chaque produit
         const getDefaultVariant = async (variant) => {
@@ -61,9 +63,9 @@ async function MyPage ({ params }) {
         CATEGORIES:
         {taxons.map((taxon) => (
           <div key={taxon["@id"]}>
-            <a href={`/categorie/${taxon.slug}`} key={taxon.code}>
+            <a href={`/${taxon.slug}`} key={taxon.code}>
               {taxon.name}
-              <img src={`${API_URL_BASE}/media/cache/sylius_small${taxon.imagethumbnailPath}`} />
+              <img src={`${taxon.imagesThumbnails}`} />
             </a>
           </div>
         ))}
@@ -73,7 +75,8 @@ async function MyPage ({ params }) {
         {updatedProducts.map((product) => (
           <div key={product["@id"]}>
             {product.name}
-            <img src={`${API_URL_BASE}/media/cache/sylius_shop_product_thumbnail${product.imagethumbnailPath}`} />
+            <img src={`${API_URL_BASE}/media/cache/resolve/sylius_shop_product_thumbnail${product.imagethumbnailPath}`} />
+            
             {product.defaultVariant && (
               <div>
                 Default Variant: {formatPrice(product.defaultVariant.price)}
