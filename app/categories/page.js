@@ -2,7 +2,7 @@
 // MyPage.js
 import getAllTaxons from "../sylius/getAllTaxons";
 import getTaxonsImages from "../sylius/getAllTaxonsImages";
-import getTaxonImage from "../sylius/getTaxonImage";
+import getTaxonImage from "../sylius/getTaxonImage.jsx";
 import { FILTER_SETS } from "../sylius/index";
 import RootLayout from "../layout";
 import Navbar from "../NavBar";
