@@ -1,7 +1,7 @@
 
 // MyPage.js
 import GetTaxons from "../sylius/GetTaxons";
-import GetTaxonsImages from "../sylius/GetTaxonsImages";
+import getTaxonsImages from "../sylius/getTaxonsImages";
 import getTaxonImage from "../sylius/getTaxonImage";
 import { FILTER_SETS } from "../sylius";
 import RootLayout from "../layout";
@@ -15,7 +15,7 @@ const PLACEHOLDER_IMAGE_URL = "https://via.placeholder.com/150";
 
 async function Categorie() {
   const getTaxons = await GetTaxons();
-  const taxonsImages = await GetTaxonsImages();
+  const taxonsImages = await getTaxonsImages();
 
   console.log("getTaxons",getTaxons);
   // console.log("taxonsImages",taxonsImages);

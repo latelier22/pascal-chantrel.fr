@@ -1,5 +1,5 @@
 import GetTaxons from "./GetTaxons";
-import GetTaxonsImages from "./GetTaxonsImages";
+import GetTaxonsImages from "./getTaxonsImages";
 import getTaxonImage from "./getTaxonImage";
 import { FILTER_SETS } from ".";
 
