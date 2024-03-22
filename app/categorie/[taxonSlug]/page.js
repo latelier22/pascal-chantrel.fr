@@ -5,7 +5,7 @@ import { Suspense} from "react";
 import getAllTaxons from '../../sylius/getAllTaxons';
 import GetProductsByTaxonCode from "../../sylius/GetProductsByTaxonCode";
 import GetProductVariant from "../../sylius/GetProductVariant";
-import getTaxonsWithImages from "../../sylius/getTaxonsWithImages";
+import getTaxonsWithImages from "../../sylius/getCategoriesWithImages";
 import formatPrice from "../../Utils/formatPrice";
 
 async function MyPage ({ params }) {

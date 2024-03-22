@@ -1,6 +1,6 @@
 import getAllTaxons from "./getAllTaxons";
 import GetTaxonsImages from "./getAllTaxonsImages";
-import getTaxonImage from "./getTaxonImage";
+import getTaxonImage from "./getCategoryImage";
 import { FILTER_SETS } from ".";
 
 async function getTaxonsWithImages() {
