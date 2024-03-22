@@ -2,7 +2,7 @@
 // MyPage.js
 import {API_URL_BASE} from "../../sylius"
 import { Suspense} from "react";
-import GetTaxons from '../../sylius/GetTaxons';
+import getAllTaxons from '../../sylius/getAllTaxons';
 import GetProductsByTaxonCode from "../../sylius/GetProductsByTaxonCode";
 import GetProductVariant from "../../sylius/GetProductVariant";
 import getTaxonsWithImages from "../../sylius/getTaxonsWithImages";

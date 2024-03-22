@@ -1,4 +1,4 @@
-// GetTaxons.js
+// getAllTaxons.js
 import axios from "axios";
 import {API_URL_BASE, API_URL_TAXON_IMAGE} from "./index"
 

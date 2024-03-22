@@ -1,10 +1,10 @@
-import GetTaxons from "./GetTaxons";
-import GetTaxonsImages from "./getTaxonsImages";
+import getAllTaxons from "./getAllTaxons";
+import GetTaxonsImages from "./getAllTaxonsImages";
 import getTaxonImage from "./getTaxonImage";
 import { FILTER_SETS } from ".";
 
 async function getTaxonsWithImages() {
-  const getTaxons = await GetTaxons();
+  const getTaxons = await getAllTaxons();
   const taxonsImages = await GetTaxonsImages();
 
   // Mettre à jour chaque taxon avec la liste d'images correspondantes ou un tableau vide

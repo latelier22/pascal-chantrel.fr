@@ -1,4 +1,4 @@
-import GetTaxons from "../API/GetTaxons";
+import getAllTaxons from "../API/getAllTaxons";
 import GetTaxonsImages from "../API/GetTaxonsImages";
 import getTaxonImage from "../API/GetTaxonImage";
 import { FILTER_SETS } from "../API";
@@ -8,7 +8,7 @@ const API_URL_BASE = "http://sylius.latelier22.fr";
 
 
 async function GetTaxonsWithImage() {
-  const getTaxons = await GetTaxons();
+  const getTaxons = await getAllTaxons();
   const taxonsImages = await GetTaxonsImages();
 
   // Mettre à jour chaque taxon avec la liste d'images correspondantes ou un tableau vide

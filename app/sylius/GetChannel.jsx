@@ -1,4 +1,4 @@
-// GetTaxons.js
+// getAllTaxons.js
 import axios from "axios";
 import {API_URL_BASE, API_URL_CHANNELS, CHANNEL_CODE} from "./index"
 
