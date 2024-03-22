@@ -2,7 +2,7 @@
 import axios from "axios";
 import {API_URL_BASE, API_URL_TAXON_IMAGE} from "./index"
 
-async function GetTaxonImage(id, filter_size) {
+async function getTaxonImage(id, filter_size) {
 
     const API_URL = API_URL_BASE + API_URL_TAXON_IMAGE+ "/" + id + "?" + "filter=" + filter_size
 
@@ -18,7 +18,7 @@ async function GetTaxonImage(id, filter_size) {
     throw error;
   }
 }
-export default GetTaxonImage;
+export default getTaxonImage;
 
 
 export const GetLogo = "http://sylius.latelier22.fr/media/cache/sylius_medium/4f/17/dfdb1eb023d8dc9cf21101c6d9e5.png";

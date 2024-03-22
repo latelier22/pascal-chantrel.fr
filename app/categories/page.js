@@ -16,7 +16,7 @@ const PLACEHOLDER_IMAGE_URL = "https://via.placeholder.com/150";
 async function Categorie() {
   const getTaxons = await getAllTaxons();
   const taxonsImages = await getTaxonsImages();
-
+ll
   console.log("getTaxons",getTaxons);
   // console.log("taxonsImages",taxonsImages);
   
