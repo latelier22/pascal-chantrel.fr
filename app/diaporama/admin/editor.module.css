@@ -1,0 +1,29 @@
+.main { width: min(100% - 32px, 1080px); margin: 30px auto; }
+.main h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.05; font-weight: 820; letter-spacing: -.04em; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 18px 0; }
+.links a { color: #435383; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+.upload, .slide { background: white; border: 1px solid #dedfe6; border-radius: 10px; padding: 14px; }
+.upload { display: flex; align-items: end; flex-wrap: wrap; gap: 9px; margin-block: 20px; }
+.upload p { flex-basis: 100%; color: #51576d; }
+.list { display: grid; gap: 8px; margin: 12px 0; }
+.slide { display: grid; grid-template-columns: 130px minmax(0, 1fr) auto; align-items: center; gap: 14px; }
+.preview { height: 83px; background: #eef0f5 center / contain no-repeat; border-radius: 6px; }
+.fields { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr) 80px; gap: 8px; }
+.main label { display: grid; align-content: start; gap: 5px; font-size: .875rem; font-weight: 650; }
+.main input:not([type="checkbox"]), .main select { max-width: 100%; width: 100%; min-height: 36px; border: 1px solid #b7bcca; border-radius: 6px; padding: 5px 7px; font: inherit; }
+.main label.switch { display: flex; align-items: center; gap: 6px; grid-column: 1 / -1; margin-top: 3px; }
+.order, .actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.main button { background: white; color: #262b47; border: 1px solid #b7bcca; border-radius: 7px; min-height: 36px; padding: 5px 10px; font-weight: 680; }
+.main button.primary { background: #435383; color: white; border-color: #435383; }
+.main button:disabled { opacity: .48; cursor: default; }
+.feedback { color: #355d30; background: #edf3eb; border-radius: 7px; padding: 9px 12px; }
+.feedback[role="alert"] { color: #793b24; background: #f9ece7; }
+@media (max-width: 760px) {
+  .slide { grid-template-columns: 93px minmax(0, 1fr); }
+  .order { grid-column: 1 / -1; }
+}
+@media (max-width: 500px) {
+  .slide { grid-template-columns: 1fr; }
+  .fields { grid-template-columns: minmax(0, 1fr) 80px; }
+  .fields label:first-child { grid-column: 1 / -1; }
+}

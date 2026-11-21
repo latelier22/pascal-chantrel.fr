@@ -76,3 +76,20 @@ interroger leur API. Les exports fournisseur et les rapports sont ignorés
 par Git. Next.js bloque l'accès HTTP à `/stock/`, qui contient les prix
 d'achat. En cas de publication de fichiers statiques par un autre serveur,
 exclure `public/stock/` de ce déploiement.
+
+## Diaporama du magasin
+
+- Gestion privée dans `/diaporama/admin`, avec l’identifiant `magasin`.
+- Lecture dans `/diaporama/horizontal` (16:9) et `/diaporama/vertical` (9:16).
+- Importer des visuels JPG ou PNG de 10 Mo maximum, régler leur durée entre
+  2 et 120 secondes, choisir les écrans, puis cocher « Diffuser » et enregistrer.
+  Un visuel ajouté est désactivé par défaut. Les écrans vérifient la liste toutes
+  les 10 secondes. Un écran déjà lancé conserve le dernier visuel affiché lors
+  d’une coupure réseau.
+
+Les variables serveur `SLIDESHOW_ADMIN_HASH` (empreinte SHA-256 hexadécimale
+du mot de passe) et `SLIDESHOW_STATE_DIR` configurent l’accès et le stockage.
+Le dossier doit être accessible en écriture par le service Next.js et rester
+en dehors des versions de déploiement. En local, il vaut `.slideshow/` par
+défaut. En production, la configuration Nginx doit autoriser les envois de
+plus de 10 Mo avec leur enveloppe multipart sur `/diaporama/admin/api`.

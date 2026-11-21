@@ -39,3 +39,7 @@ node_modules
 # Exports fournisseur et rapports locaux
 /public/stock/
 /.stock-import/
+
+# Données et accès locaux du diaporama
+/.slideshow/
+/.slideshow-access.txt

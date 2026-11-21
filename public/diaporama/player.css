@@ -1,0 +1,10 @@
+html, body, #screen { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #090a10; color: white; }
+body { font-family: Arial, sans-serif; }
+#screen { position: relative; }
+#screen > .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-repeat: no-repeat; background-size: contain; background-position: center; }
+#empty { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 82%; max-width: 490px; text-align: center; }
+#empty img { max-width: 100%; background: white; border-radius: 10px; padding: 8px; box-sizing: border-box; }
+#empty p { font-size: 18px; line-height: 1.5; }
+#fullscreen { position: fixed; right: 12px; bottom: 12px; background: #20223a; color: white; border: 1px solid #9da0b7; border-radius: 7px; padding: 9px 14px; cursor: pointer; }
+#fullscreen.hidden { opacity: 0; pointer-events: none; }
+#fullscreen:focus-visible { opacity: 1; outline: 2px solid white; }
