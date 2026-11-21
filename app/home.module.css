@@ -187,3 +187,21 @@
 @media (max-width: 640px) {
   .serviceGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+.productDetail { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); align-items: center; }
+.detailPhoto { min-height: 0; height: clamp(210px, 33vw, 300px); }
+.detailCopy .description { max-width: 62ch; line-height: 1.65; }
+.energyBadge { display: inline-flex; align-items: center; gap: 10px; padding: 4px 10px 4px 5px; border: 1px solid var(--line); border-radius: 8px; font-size: .875rem; }
+.energyBadge strong { padding: 1px 9px; border-radius: 4px; font-size: 1rem; color: white; background: var(--ink); }
+.specifications { max-width: 900px; margin-top: 28px; border: 1px solid var(--line); border-radius: 14px; background: white; padding: clamp(16px, 4vw, 32px); }
+.specifications h2 { margin-bottom: 16px; font-size: clamp(1.35rem, 3vw, 1.9rem); }
+.specifications dl > div { display: grid; grid-template-columns: minmax(105px, 1fr) minmax(0, 1.65fr); gap: 12px; padding: 9px 10px; }
+.specifications dl > div:nth-child(odd) { background: #f1f3f7; border-radius: 5px; }
+.specifications dt { font-weight: 700; }
+.specifications dd, .specifications dt { overflow-wrap: anywhere; }
+.specifications p, .specifications ul { margin-top: 14px; }
+.specifications a { color: var(--slate); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 640px) {
+  .productDetail { grid-template-columns: 1fr; }
+  .detailPhoto { height: 220px; max-width: 300px; width: 100%; justify-self: center; }
+}

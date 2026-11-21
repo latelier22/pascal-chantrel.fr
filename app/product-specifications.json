@@ -1,0 +1,863 @@
+{
+  "T108HBW": {
+    "description": "Sèche-linge ASKO à pompe à chaleur avec tambour de 8 kg. Les dix programmes couvrent notamment le coton, les synthétiques et les lainages.",
+    "facts": {
+      "Capacité": "8 kg",
+      "Séchage": "Pompe à chaleur",
+      "Programmes": "10",
+      "Niveau sonore": "66 dB",
+      "Dimensions (H × L × P)": "85 × 60 × 63 cm (fiche UE, arrondies)"
+    },
+    "energy": {
+      "class": "C",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche énergétique européenne (EPREL)",
+        "url": "https://eprel.ec.europa.eu/screen/product/tumbledryers20232534/2255400"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.procie.com/seche-linge-t108hbw.html"
+      }
+    ]
+  },
+  "W1084BW": {
+    "description": "Lave-linge frontal ASKO Classic de 8 kg avec tambour de 60 litres et essorage jusqu’à 1 400 tr/min.",
+    "facts": {
+      "Capacité": "8 kg",
+      "Tambour": "60 L",
+      "Essorage maximal": "1 400 tr/min",
+      "Programme Eco 40–60": "47 kWh / 100 cycles et 48 L / cycle"
+    },
+    "energy": {
+      "class": "A",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://www.procie.com/mediaprovider/index/index/media_type/eu_product_file/filename/FPUE_192097.pdf/"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://global.asko.com/products/laundry/All-washing-machines/Classic/WASHER-WM76S-1A840-W1084BW-ASK/p/000000000000746386"
+      }
+    ]
+  },
+  "CHCS514EX": {
+    "description": "Réfrigérateur combiné Candy de 207 L, avec congélateur inférieur et portes réversibles. Sa largeur de 55 cm convient aux emplacements étroits.",
+    "facts": {
+      "Volume total": "207 L",
+      "Réfrigérateur / congélateur": "138 L / 69 L",
+      "Dégivrage du congélateur": "Manuel",
+      "Consommation": "205 kWh/an",
+      "Dimensions (H × L × P)": "151 × 55 × 58 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.candy-home.com/pl_PL/chlodziarkko-zamrazarki/34004840/chcs-514ex/"
+      },
+      {
+        "label": "Étiquette énergétique",
+        "url": "https://www.procie.com/mediaprovider/index/index/media_type/energy_label/filename/EL_CHCS514EX.pdf/"
+      }
+    ]
+  },
+  "SV8022C1": {
+    "description": "Centrale vapeur Calor Express Airglide pour le repassage à plat ou vertical. Sa cuve amovible contient 1,8 L.",
+    "facts": {
+      "Pression de la pompe": "7,2 bars",
+      "Débit vapeur continu": "125 g/min",
+      "Réservoir": "1,8 L",
+      "Puissance": "2 800 W"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.rowenta.fr/calor/notices/soin-du-linge/centrale-vapeur/express-airglide-72-bars-bleue/csp/1830008764"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://static.findis.fr/data/articles/1259529/fiche-produit-2314.pdf"
+      }
+    ]
+  },
+  "EGL628210X": {
+    "description": "Table de cuisson mixte Electrolux à trois brûleurs gaz et une plaque électrique, identifiée par la notice portant la référence exacte EGL628210X.",
+    "facts": {
+      "Marque": "Electrolux",
+      "Référence fabricant (PNC)": "949740652",
+      "Foyers": "3 gaz et 1 électrique",
+      "Diamètre de la plaque électrique": "14,5 cm",
+      "Consommation normalisée de la zone électrique": "199,9 Wh/kg"
+    },
+    "sources": [
+      {
+        "label": "Notice ou document technique",
+        "url": "https://media.flixcar.com/webp/synd-asset/Electrolux-300692327-241220YIEB.pdf"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://www.electrolux.it/contentassets/1fc4e8243a5f4050a4712eb721cecf22/pnc-bonus-elettrodomestici.pdf"
+      }
+    ],
+    "title": "Plaque mixte Electrolux"
+  },
+  "KDI640713K": {
+    "description": "Plaque mixte Electrolux série 300, équipée de deux zones à induction et de deux brûleurs gaz. Les commandes sont placées à l’avant.",
+    "facts": {
+      "Foyers": "2 gaz et 2 induction",
+      "Format": "60 cm",
+      "Largeur × profondeur d’encastrement": "56 × 49 cm",
+      "Référence fabricant (PNC)": "949760096"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.electrolux.fr/kitchen/cooking/hobs/mixed-hob/kdi640713k/"
+      }
+    ]
+  },
+  "RB33B610ESA": {
+    "description": "Réfrigérateur combiné Samsung SpaceMax de 344 L. Le froid ventilé No Frost évite l’accumulation de givre dans le congélateur.",
+    "facts": {
+      "Volume total": "344 L",
+      "Réfrigérateur / congélateur": "230 L / 114 L",
+      "Niveau sonore": "35 dB",
+      "Dimensions (H × L × P)": "185,3 × 59,5 × 65,8 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche énergétique européenne (EPREL)",
+        "url": "https://eprel.ec.europa.eu/informationsheet/Fiche_1293184_EN.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.samsung.com/fr/support/model/RB33B610ESA/EF/"
+      }
+    ]
+  },
+  "EFTD26X": {
+    "description": "Hotte décorative murale Electrolux en inox de 60 cm, avec éclairage LED et trois vitesses d’aspiration.",
+    "facts": {
+      "Largeur": "60 cm",
+      "Débit d’air maximal": "600 m³/h",
+      "Niveau sonore maximal": "68 dB",
+      "Consommation annuelle selon PNC": "96,4 à 97,4 kWh/an"
+    },
+    "energy": {
+      "class": "C",
+      "scale": "A+++ à D"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.electrolux.fr/kitchen/cooking/cooker-hoods/chimney-hood/eftd26x2/"
+      },
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://www.electrolux.fr/external/compliance-documents/EUEnergyLabel/942022802/Combined/latest/PDF/FR"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.u-techno.fr/media/f6/8d/0f/1724660426/Fiche-produit-europeenne-Hotte-decorative-murale-EFTD26X.pdf?ts=1730193026"
+      }
+    ]
+  },
+  "WAN2827TFR": {
+    "description": "Lave-linge frontal Bosch Série 4 pour 8 kg, avec programme vapeur Iron Assist et sécurité anti-fuite AquaStop.",
+    "facts": {
+      "Capacité": "8 kg",
+      "Essorage maximal annoncé": "1 400 tr/min",
+      "Dimensions (H × L × P)": "84,5 × 59,8 × 59 cm (hors saillies)",
+      "Technologie": "Iron Assist et AquaStop"
+    },
+    "energy": {
+      "class": "A",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bosch-home.com/Documents/specsheet/fr-FR/WAN2827TFR.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.bosch-home.fr/fr/product/lave-linge-et-seche-linge/lave-linge/lave-linge-a-chargement-frontal/WAN2827TFR"
+      }
+    ]
+  },
+  "EGL62821OB": {
+    "description": "Plaque Electrolux noire combinant trois brûleurs à gaz et une plaque électrique. Les brûleurs se règlent par manettes.",
+    "facts": {
+      "Foyers": "3 gaz et 1 électrique",
+      "Finition": "Noire",
+      "Dimensions (L × P)": "58 × 50 cm",
+      "Référence fabricant (PNC)": "949740659"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.electrolux.fr/kitchen/cooking/hobs/gas-hob/egl62821ob/"
+      }
+    ]
+  },
+  "HBA571BB4": {
+    "description": "Four Bosch encastrable noir à chaleur tournante 3D, avec dix programmes automatiques et nettoyage par pyrolyse.",
+    "facts": {
+      "Capacité": "71 L",
+      "Nettoyage": "Pyrolyse",
+      "Programmes automatiques": "10",
+      "Dimensions (H × L × P)": "59,5 × 59,4 × 54,8 cm"
+    },
+    "energy": {
+      "class": "A+",
+      "scale": "A+++ à D"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bosch-home.com/Documents/specsheet/fr-FR/HBA571BB4.pdf"
+      },
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://media3.bsh-group.com/Documents/eudatasheet/fr-FR/HBA571BB4.pdf"
+      }
+    ]
+  },
+  "WAN2827AFR": {
+    "description": "Lave-linge frontal Bosch Série 4 de 8 kg avec moteur EcoSilence Drive et programme vapeur Iron Assist.",
+    "facts": {
+      "Capacité": "8 kg",
+      "Essorage maximal annoncé": "1 400 tr/min",
+      "Dimensions (H × L × P)": "84,5 × 59,8 × 59 cm (hors saillies)",
+      "Fonction vapeur": "Iron Assist"
+    },
+    "energy": {
+      "class": "A",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bsh-group.com/Documents/specsheet/fr-FR/WAN2827AFR.pdf"
+      }
+    ]
+  },
+  "43PUS7800/12": {
+    "description": "Téléviseur Philips QLED 4K de 43 pouces équipé de Titan OS. Il accepte les contenus HDR et permet d’accéder aux applications de télévision connectée.",
+    "facts": {
+      "Écran": "43 pouces, QLED",
+      "Définition": "3840 × 2160 pixels",
+      "Système": "Titan OS",
+      "Classe HDR": "G",
+      "Consommation SDR / HDR": "44 / 66 kWh pour 1 000 h"
+    },
+    "energy": {
+      "class": "F",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche énergétique européenne (EPREL)",
+        "url": "https://eprel.ec.europa.eu/screen/product/electronicdisplays/2254313"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://acc.philips.fr/c-p/43PUS7800_12/qled-4k-tv"
+      }
+    ]
+  },
+  "NL4WR21N1": {
+    "description": "Micro-ondes encastrable Neff N 70 en inox, doté de la technologie Inverter et d’un écran tactile pour régler la cuisson.",
+    "facts": {
+      "Installation": "Encastrable",
+      "Cavité": "21 L",
+      "Puissance maximale micro-ondes": "900 W",
+      "Dimensions (H × L × P)": "38,2 × 59,6 × 31,8 cm"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.neff-international.com/Documents/specsheet/fr-FR/NL4WR21N1.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.neff-home.com/fr/fr/mkt-product/micro-ondes/micro-ondes-encastrables/NL4WR21N1"
+      }
+    ]
+  },
+  "SMV4HVX14E": {
+    "description": "Lave-vaisselle Bosch Série 4 tout intégrable de 60 cm. Le tiroir à couverts libère de la place dans les paniers et l’application Home Connect permet le pilotage à distance.",
+    "facts": {
+      "Capacité": "14 couverts",
+      "Largeur": "59,8 cm",
+      "Niveau sonore": "46 dB",
+      "Connectivité": "Home Connect"
+    },
+    "energy": {
+      "class": "C",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bsh-group.com/Documents/specsheet/fr-FR/SMV4HVX14E.pdf"
+      }
+    ]
+  },
+  "WTH8300DFR": {
+    "description": "Sèche-linge Bosch Série 4 à pompe à chaleur pour 8 kg de linge. Les capteurs AutoDry ajustent la durée en fonction de l’humidité.",
+    "facts": {
+      "Capacité": "8 kg",
+      "Technologie": "Pompe à chaleur",
+      "Niveau sonore": "63 dB",
+      "Dimensions (H × L × P)": "84,2 × 59,8 × 61,3 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bosch-home.com/Documents/specsheet/fr-FR/WTH8300DFR.pdf"
+      },
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://media3.bosch-home.com/Documents/eudatasheet/fr-FR/WTH8300DFR.pdf"
+      }
+    ]
+  },
+  "TQ55Q7F5AUXXC": {
+    "description": "Téléviseur Samsung Q7F 55 pouces QLED 4K, avec les applications de Tizen et une sortie audio compatible eARC.",
+    "facts": {
+      "Écran": "55 pouces, QLED",
+      "Définition": "3840 × 2160 pixels",
+      "Système": "Tizen",
+      "Indice de durabilité déclaré": "8/10",
+      "Consommation SDR / HDR": "79 / 110 kWh pour 1 000 h"
+    },
+    "energy": {
+      "class": "G",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://boulanger.scene7.com/is/content/Boulanger/8806097124375_f_0"
+      },
+      {
+        "label": "Notice ou document technique",
+        "url": "https://www.procie.com/mediaprovider/index/index/media_type/notice/filename/PID_TQ55Q7F5AUXXC.pdf/"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.kuantokusta.pt/p/11779539/samsung-55-2025-qled-4k-uhd-tq55q7f5auxxc"
+      }
+    ]
+  },
+  "BHB6601X": {
+    "description": "Hotte murale Brandt en inox de 60 cm. Installation en évacuation ou en recyclage, selon la configuration de la cuisine.",
+    "facts": {
+      "Largeur": "60 cm",
+      "Débit maximal en évacuation": "602 m³/h",
+      "Niveau sonore en fonctionnement normal": "62 à 70 dB",
+      "Consommation annuelle": "56,9 kWh/an"
+    },
+    "energy": {
+      "class": "B",
+      "scale": "A+++ à D"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://www.brandt.fr/sites/default/files/bhb6601x_eu_fr.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://electro-brandt.es/campana-decorativa-bhb6601x/"
+      }
+    ]
+  },
+  "MQ7005B": {
+    "description": "Mixeur plongeant Braun MultiQuick 7 de 1 000 W, avec réglage de la vitesse par pression. Le fouet sert aux préparations à monter ou à battre.",
+    "facts": {
+      "Type": "Mixeur plongeant",
+      "Puissance": "1 000 W",
+      "Réglage": "SmartSpeed",
+      "Accessoires": "Fouet et gobelet doseur"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.braunhousehold.com/fr-fr/p/multiquick-7-pied-mixeur-multiquick-7-mq7005b/MQ7005BWH.html?pid=0X22111530"
+      }
+    ],
+    "title": "Mixeur plongeant Braun MultiQuick 7"
+  },
+  "TQ43Q7F4": {
+    "description": "Téléviseur Samsung QLED 4K de 43 pouces avec Tizen, processeur Q4 AI et prise en charge des formats HDR10+ et HLG.",
+    "facts": {
+      "Écran": "43 pouces, QLED 60 Hz",
+      "Définition": "3840 × 2160 pixels",
+      "Classe HDR": "G",
+      "Consommation SDR / HDR": "53 / 102 kWh pour 1 000 h",
+      "VESA": "200 × 200 mm"
+    },
+    "energy": {
+      "class": "G",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.mda-electromenager.com/fr/a/tv-led-43-samsung-tq43q7f4"
+      }
+    ]
+  },
+  "B1854N": {
+    "description": "Réfrigérateur Beko à encastrer sous un plan de travail. Son compartiment réfrigérateur de 110 L est prévu pour les produits frais.",
+    "facts": {
+      "Pose": "Encastrable",
+      "Volume": "110 L",
+      "Dimensions (H × L × P)": "86,6 × 54,5 × 54,5 cm",
+      "Classe de bruit": "B"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://www.beko.fr/sites/default/files/Art_ProductFiche_B1854N.pdf"
+      }
+    ]
+  },
+  "K50S35B": {
+    "description": "Téléviseur Sony BRAVIA 3 Direct LED de 50 pouces. Google TV regroupe les applications et le téléviseur prend en charge Dolby Vision.",
+    "facts": {
+      "Écran": "50 pouces / 126 cm",
+      "Définition": "3840 × 2160 pixels",
+      "Plateforme": "Google TV",
+      "Consommation SDR / HDR": "60 / 80 kWh pour 1 000 h"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.sony.fr/bravia/products/bravia-3"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.group-digital.fr/tv-50-bravia-3-led-sony-k50s35b-4548736167995.html"
+      }
+    ]
+  },
+  "BBIE13301XFP-1": {
+    "description": "Four encastrable Beko de 66 L avec chaleur brassée, nettoyage pyrolyse et porte froide. Il propose neuf programmes de cuisson.",
+    "facts": {
+      "Volume utile": "66 L",
+      "Nettoyage": "Pyrolyse",
+      "Programmes": "9",
+      "Finition": "Inox anti-trace et noir"
+    },
+    "energy": {
+      "class": "A",
+      "scale": "A+++ à D"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.beko.fr/bbie13301xfp-1"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://cdn.sisca.fr/products/F46D0B24-CF83-423F-BEC6-4DCD028F37EF/F46D0B24-CF83-423F-BEC6-4DCD028F37EF_FT_1.pdf"
+      }
+    ]
+  },
+  "55UA75006LA": {
+    "description": "Téléviseur LG UA75 de 55 pouces à dalle LED 4K avec webOS, conçu pour la télévision et les applications de streaming.",
+    "facts": {
+      "Écran": "55 pouces / 139 cm",
+      "Définition": "3840 × 2160 pixels",
+      "Fréquence native": "60 Hz",
+      "Système": "webOS",
+      "Classe HDR": "G",
+      "Consommation SDR / HDR": "84 / 105 kWh pour 1 000 h"
+    },
+    "energy": {
+      "class": "G",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.lg.com/fr/tv-barres-de-son/4k-uhd-tvs/lg-55ua75006la-4k-tv/"
+      },
+      {
+        "label": "Fiche énergétique européenne (EPREL)",
+        "url": "https://eprel.ec.europa.eu/fiches/electronicdisplays/Fiche_2230293_FR.pdf"
+      }
+    ]
+  },
+  "K75S35B": {
+    "description": "Téléviseur Sony BRAVIA 3 de 75 pouces, avec écran Direct LED 4K, Google TV et compatibilité Dolby Vision.",
+    "facts": {
+      "Écran": "75 pouces / 189 cm",
+      "Définition": "3840 × 2160 pixels",
+      "Plateforme": "Google TV",
+      "Classe HDR": "G"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.sony.fr/bravia/products/bravia-3"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.group-digital.fr/tv-75-bravia-3-led-sony-k75s35b-4548736167728.html"
+      }
+    ]
+  },
+  "TAM3205M2/12": {
+    "description": "Microchaîne Philips avec deux enceintes, lecteur CD, radio FM, lecture USB et diffusion Bluetooth.",
+    "facts": {
+      "Puissance audio": "20 W RMS",
+      "Sources": "CD, USB, Bluetooth et radio FM",
+      "Entrée audio": "Jack 3,5 mm",
+      "Dimensions de l’ensemble (L × H × P)": "480 × 238 × 247 mm"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.philips.fr/c-p/TAM3205M2_12/micro-music-system"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://www.documents.philips.com/assets/20240926/ede24d28fc0c4b60bde1b1f700bf31b0.pdf"
+      }
+    ]
+  },
+  "BGB41HYG1H": {
+    "description": "Aspirateur traîneau Bosch Série 4 ProHygienic avec sac. Le suceur plat et le suceur pour tissus sont rangés dans l’appareil.",
+    "facts": {
+      "Type": "Aspirateur avec sac",
+      "Série": "Bosch Série 4 ProHygienic",
+      "Accessoires intégrés": "Suceur plat et suceur pour tissus",
+      "Dimensions (H × L × P)": "26,5 × 29,5 × 41 cm"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.bosch-home.fr/fr/product/aspirateurs/aspirateurs-avec-sac/BGB41HYG1H"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bosch-home.com/Documents/specsheet/fr-FR/BGB41HYG1H.pdf"
+      }
+    ]
+  },
+  "AX20414000": {
+    "description": "Lecteur DVD figurant dans le catalogue sous la référence interne AX20414000.",
+    "facts": {
+      "Type": "Lecteur DVD",
+      "Référence de stock": "AX20414000",
+      "Marque et modèle fabricant": "À confirmer"
+    },
+    "sources": [],
+    "note": "Aucune fiche publique trouvée pour cette référence. Les formats lisibles et les prises disponibles restent à confirmer sur l’appareil, son emballage ou son code-barres."
+  },
+  "E-SAT4K": {
+    "description": "Décodeur satellite CGV compatible FRANSAT pour recevoir les chaînes par parabole. Il peut enregistrer sur un support USB et mettre le direct en pause.",
+    "facts": {
+      "Réception": "Satellite FRANSAT",
+      "Sortie vidéo": "HDMI jusqu’à 2160p",
+      "Fonctions USB": "Enregistrement et contrôle du direct",
+      "Alimentation": "12 V"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.notice-facile.com/notice/347933/cgv%2Be-sat4k"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.mda-electromenager.com/fr/a/recepteur-satellite-uhd-cgv-e-sat4k"
+      }
+    ]
+  },
+  "BTWS50400FR": {
+    "description": "Lave-linge Indesit à ouverture par le dessus. Sa largeur de 40 cm facilite l’installation dans une petite buanderie.",
+    "facts": {
+      "Capacité": "5 kg",
+      "Essorage maximal annoncé": "1 000 tr/min",
+      "Chargement": "Par le dessus",
+      "Largeur": "40 cm"
+    },
+    "energy": {
+      "class": "C",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media.but.fr/products/media/8050147694022/8050147694022_FP.pdf"
+      },
+      {
+        "label": "Notice ou document technique",
+        "url": "https://www.procie.com/mediaprovider/index/index/media_type/notice/filename/BTWS50400FR.pdf/"
+      }
+    ]
+  },
+  "AIM2520T": {
+    "description": "Plaque domino à induction Amica, conçue pour un plan de travail étroit. Deux foyers permettent de cuisiner avec des récipients de tailles différentes.",
+    "facts": {
+      "Largeur": "29 cm",
+      "Foyers": "2 zones induction",
+      "Diamètre des foyers": "18 cm à l’avant et 16 cm à l’arrière",
+      "Puissance maximale": "3 600 W"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://amica-group.fr/fr/produits/tables-de-cuisson/induction/aim2520t"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://api.amica.com.pl/pub-storage/pubs/instrukcje/fr/AIM2520T_AVM2520T_FR_notice.pdf"
+      }
+    ]
+  },
+  "GTTL95EW": {
+    "description": "Réfrigérateur compact Curtiss de 95 L avec porte réversible. Son compartiment à glace de 11 L est sans étoile.",
+    "facts": {
+      "Volume total": "95 L",
+      "Réfrigérateur / compartiment à glace": "84 L / 11 L",
+      "Niveau sonore": "40 dB",
+      "Consommation": "91 kWh/an",
+      "Dimensions (H × L × P)": "83,3 × 48,6 × 53,6 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.mda-electromenager.com/fr/a/refrigerateur-table-top-curtiss-gttl95ew"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.e.leclerc/fp/refrigerateur-table-top-49cm-95l-blanc-gttl95ew-curtiss-3260449052757"
+      }
+    ],
+    "note": "Données de la version 95 L, EAN 3260449052757, cohérentes avec les dimensions de l’export de stock."
+  },
+  "LKI64890BW": {
+    "description": "Cuisinière Electrolux blanche, avec trois foyers induction et un four SurroundCook de 73 L. Le four se nettoie par pyrolyse.",
+    "facts": {
+      "Format": "60 × 60 cm",
+      "Table": "3 foyers à induction",
+      "Volume du four": "73 L",
+      "Nettoyage du four": "Pyrolyse"
+    },
+    "energy": {
+      "class": "A+",
+      "scale": "A+++ à D",
+      "mode": "Four"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.electrolux.fr/kitchen/cooking/cookers/electric-cooker/lki64890bw/"
+      }
+    ]
+  },
+  "CSA210/25": {
+    "description": "Machine Philips Senseo Original Plus à dosettes souples. Elle prépare un café long ou intense et permet de servir une ou deux tasses.",
+    "facts": {
+      "Type de café": "Dosettes souples Senseo",
+      "Sélecteur": "Long ou intense",
+      "Capacité": "Une ou deux tasses",
+      "Dimensions (L × P × H)": "21,3 × 31,5 × 33 cm"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://www.documents.philips.com/assets/20230212/9a5f262641dc4c639a79afa701388491.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://acc.philips.fr/c-p/CSA210_25/machine-a-cafe-a-dosettes-original-plus"
+      }
+    ]
+  },
+  "G5651SCVI": {
+    "description": "Lave-vaisselle Miele Active de 14 couverts, tout intégrable. La porte s’ouvre automatiquement en fin de programme pour faciliter le séchage.",
+    "facts": {
+      "Capacité": "14 couverts",
+      "Installation": "Tout intégrable, largeur nominale 60 cm",
+      "Eau en programme Eco": "8,2 L / cycle",
+      "Électricité en programme Eco": "54 kWh / 100 cycles",
+      "Séchage": "AutoOpen"
+    },
+    "energy": {
+      "class": "A",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media.miele.com/downloads/8c/5a/00_C7F1282857601FD083EEE23636D48C5A.pdf"
+      },
+      {
+        "label": "Fiche distributeur",
+        "url": "https://www.mda-electromenager.com/fr/a/lave-vaisselle-tout-integre-60-cm-miele-g5651scvi"
+      }
+    ]
+  },
+  "32PHS6050/12": {
+    "description": "Téléviseur LED Philips de 32 pouces, avec Titan OS et prises HDMI et USB. Son format convient aux pièces où l’espace est limité.",
+    "facts": {
+      "Écran": "32 pouces",
+      "Plateforme": "Titan OS",
+      "Consommation SDR / HDR": "22 / 36 kWh pour 1 000 h",
+      "Dimensions avec pied (L × H × P)": "71,6 × 44,7 × 19,2 cm",
+      "VESA": "200 × 150 mm",
+      "Définition native": "1366 × 768 pixels",
+      "Classe HDR": "G",
+      "Connectique": "3 HDMI et 2 USB"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche énergétique européenne (EPREL)",
+        "url": "https://eprel.ec.europa.eu/qr/2302514"
+      },
+      {
+        "label": "Documentation technique",
+        "url": "https://www.documents.philips.com/assets/20250623/235795f3a37245aaa9f0b30500b6907e.pdf"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.philips.fr/c-p/32PHS6050_12/led-televiseur-led-2k"
+      }
+    ]
+  },
+  "50QNED82A6B": {
+    "description": "Téléviseur LG QNED82 de 50 pouces en 4K. Le système webOS donne accès aux applications et services de streaming.",
+    "facts": {
+      "Écran": "50 pouces, QNED",
+      "Définition": "3840 × 2160 pixels",
+      "Fréquence native": "60 Hz",
+      "Plateforme": "webOS"
+    },
+    "energy": {
+      "class": "F",
+      "scale": "A à G",
+      "mode": "SDR"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.lg.com/fr/tv-barres-de-son/qned/lg-50qned82a6b-qned-4k-tv/"
+      },
+      {
+        "label": "Fiche d’information UE",
+        "url": "https://www.gitem.fr/mediaprovider/index/index/media_type/eu_product_file/filename/FPUE_50QNED82A6B-AEU.pdf/"
+      }
+    ]
+  },
+  "KGV36VWEAS": {
+    "description": "Réfrigérateur combiné Bosch Série 4 blanc de 308 L, avec bac VitaFresh et système LowFrost qui réduit la formation de givre.",
+    "facts": {
+      "Volume total": "308 L",
+      "Réfrigérateur / congélateur": "214 L / 94 L",
+      "Niveau sonore": "39 dB",
+      "Hauteur × largeur": "186 × 60 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Documentation technique",
+        "url": "https://media3.bosch-home.com/Documents/specsheet/fr-FR/KGV36VWEAS.pdf"
+      }
+    ]
+  },
+  "CTPE251-26": {
+    "description": "Réfrigérateur Liebherr deux portes de 270 L avec congélateur supérieur. Le système SmartFrost limite le givre dans le compartiment congélation.",
+    "facts": {
+      "Volume total": "270 L",
+      "Niveau sonore": "37 dB",
+      "Consommation": "190 kWh/an",
+      "Dimensions (H × L × P)": "157,1 × 55 × 63 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://assets-cdn.liebherr.com/versions/c5f2d8f4-fe35-4f59-a1cd-54f7b349a62c/original/"
+      },
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.procie.com/refrigerateur-2-portes-157-1cm-ctpe251-26.html"
+      }
+    ]
+  },
+  "KTE500": {
+    "description": "Réfrigérateur sous plan Liebherr de 110 L, sans compartiment congélateur. Son niveau sonore déclaré est de 35 dB.",
+    "facts": {
+      "Volume": "110 L",
+      "Niveau sonore": "35 dB",
+      "Consommation": "88 kWh/an",
+      "Dimensions (H × L × P)": "85 × 50 × 60,7 cm"
+    },
+    "energy": {
+      "class": "E",
+      "scale": "A à G"
+    },
+    "sources": [
+      {
+        "label": "Fiche produit ou assistance fabricant",
+        "url": "https://www.liebherr.com/fr-fr/p/re-1200-3041821"
+      }
+    ]
+  }
+}
