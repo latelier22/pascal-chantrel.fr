@@ -13,6 +13,10 @@
   var hideButton;
   var visible;
   var preload;
+  var retiring;
+  var transitionTimer;
+  var transitions = orientation === "vertical" ? ["top", "bottom"] : ["left", "right", "top", "bottom"];
+  var displayCount = 0;
 
   function schedule(fn, delay) {
     window.clearTimeout(timer);
@@ -29,16 +33,26 @@
 
   function imageSlide(slide) {
     var element = document.createElement("div");
-    element.className = "slide";
+    element.className = "slide image-slide";
     element.setAttribute("role", "img");
     element.setAttribute("aria-label", slide.title || "Visuel du magasin");
     element.style.backgroundImage = 'url("' + slide.url + '")';
     return element;
   }
 
-  function productSlide(slide, image) {
+  function christmasLights(parent) {
+    var lights = addText(parent, "div", "christmas-lights", "");
+    lights.setAttribute("aria-hidden", "true");
+    for (var i = 0; i < 12; i++) {
+      addText(lights, "span", "christmas-star", i % 3 === 0 ? "✧" : "✦");
+    }
+  }
+
+  function productSlide(slide, image, layout) {
     var element = document.createElement("article");
     element.className = "slide christmas-slide" + (slide.theme === "standard" ? " standard-slide" : "");
+    element.setAttribute("data-layout", layout);
+    if (slide.theme !== "standard") christmasLights(element);
     var content = addText(element, "div", "christmas-content", "");
     var brand = addText(content, "p", "christmas-brand", "Pascal Chantrel");
     addText(brand, "span", "christmas-label", slide.heading || "Sélection de Noël");
@@ -52,20 +66,40 @@
     }
 
     var copy = addText(content, "div", "christmas-copy", "");
-    addText(copy, "p", "christmas-category", slide.category);
-    addText(copy, "h1", "christmas-title", slide.title);
-    addText(copy, "p", "christmas-reference", slide.reference);
+    var details = addText(copy, "div", "christmas-details", "");
+    addText(details, "p", "christmas-category", slide.category);
+    addText(details, "h1", "christmas-title", slide.title);
+    addText(details, "p", "christmas-reference", slide.reference);
     if (slide.feature || slide.energy) {
-      var traits = addText(copy, "ul", "christmas-traits", "");
+      var traits = addText(details, "ul", "christmas-traits", "");
       if (slide.feature) addText(traits, "li", "", slide.feature);
       if (slide.energy) addText(traits, "li", "", slide.energy);
     }
-    addText(copy, "p", "christmas-price", slide.price);
+    var price = addText(copy, "p", "christmas-price", slide.price);
+    if (slide.price.indexOf("€") === -1) price.className += " price-on-request";
 
     var progress = addText(element, "div", "christmas-progress", "");
     progress.setAttribute("aria-hidden", "true");
     progress.style.animationDuration = slide.duration + "s";
     return element;
+  }
+
+  function removeRetiring() {
+    window.clearTimeout(transitionTimer);
+    if (retiring) screen.removeChild(retiring);
+    retiring = null;
+  }
+
+  function replaceVisible(element) {
+    removeRetiring();
+    screen.appendChild(element);
+    if (visible) {
+      retiring = visible;
+      retiring.setAttribute("aria-hidden", "true");
+      transitionTimer = window.setTimeout(removeRetiring, 760);
+    }
+    visible = element;
+    empty.style.display = "none";
   }
 
   function show(position, remaining) {
@@ -88,11 +122,14 @@
     function display(loaded) {
       if (ticket !== generation) return;
       window.clearTimeout(loading);
-      var element = slide.kind === "product" ? productSlide(slide, loaded) : imageSlide(slide);
-      screen.appendChild(element);
-      if (visible) screen.removeChild(visible);
-      visible = element;
-      empty.style.display = "none";
+      var element;
+      if (slide.kind === "product") {
+        element = productSlide(slide, loaded, transitions[displayCount % transitions.length]);
+        displayCount++;
+      } else {
+        element = imageSlide(slide);
+      }
+      replaceVisible(element);
       index = position;
       if (list.length > 1) {
         var next = (index + 1) % list.length;
@@ -130,6 +167,7 @@
         if (list.length) {
           show(0, list.length);
         } else {
+          removeRetiring();
           if (visible) screen.removeChild(visible);
           visible = null;
           empty.querySelector("p").textContent = playlist.message || "Aucun visuel à diffuser.";
