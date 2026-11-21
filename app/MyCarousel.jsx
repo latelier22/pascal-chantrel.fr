@@ -16,7 +16,6 @@ const MyCarousel = ({ images }) => {
     <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
          {/* Item 1 */}
          {images.map((image, index) => {
-          console.log('Image:', image); // Log each image
           return (
         <div key= {index} className="hidden duration-200 ease-linear" data-carousel-item>
             <img src="photo-fuite1.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt={image.alt} />

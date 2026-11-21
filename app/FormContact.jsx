@@ -19,31 +19,29 @@ const FormContact = () => {
   // States
   const [isLoading, setIsLoading] = useState(false);
   const [isSended, setIsSended] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   // Méthode
   const onSubmitHandler = async (data) => {
-    if (!isLoading) {
-      setIsLoading(true);
-
+    if (isLoading) return;
+    setIsLoading(true);
+    setSendError(false);
+    try {
       const response = await fetch("/api/email", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
-      const result = await response.json();
-
-      setIsLoading(false);
-
       if (!response.ok) {
-        console.log("error");
-      } else {
-        console.log("ok");
-        reset();
-        setIsSended(true);
+        setSendError(true);
+        return;
       }
+      reset();
+      setIsSended(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -147,6 +145,7 @@ const FormContact = () => {
               <button className="text-black" style={{ padding: "5px 10px" }}>Envoyer</button>
             )}
           </div>
+          {sendError && <p role="alert">Le message n’a pas pu être envoyé. Vous pouvez nous joindre par téléphone.</p>}
         </form>
       </div>
     </>

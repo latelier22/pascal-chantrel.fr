@@ -10,8 +10,8 @@ import Cards from "../Cards";
 import MyLightBox from "../MyLightBox"
 import { Pages } from "../site";
 
-const MyPage = ({ params }) => {
-  const pageSlug = params.pageSlug;
+const MyPage = async ({ params }) => {
+  const { pageSlug } = await params;
   const page = Pages[pageSlug];
   if (!page) {
     return (

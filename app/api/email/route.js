@@ -40,7 +40,9 @@ export async function POST(request) {
 		}
 	};
     // Donner la clÃ© API
-	sgMail.setApiKey(process.env.KEY_SENDGRID);
+	const apiKey = process.env.KEY_SENDGRID;
+	if (!apiKey) return NextResponse.json({ message: "EMAIL_UNAVAILABLE" }, { status: 503 });
+	sgMail.setApiKey(apiKey);
 	
 
     try {
@@ -52,6 +54,6 @@ export async function POST(request) {
 
     }
     catch (error) {
-        return NextResponse.json({error});
+        return NextResponse.json({ message: "EMAIL_UNAVAILABLE" }, { status: 502 });
     }
 }
