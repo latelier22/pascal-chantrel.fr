@@ -1,5 +1,3 @@
-import fs from 'fs';
-import csv from 'csv-parser';
 import data from "./products.json"
 
 async function getProducts() {
@@ -21,9 +19,6 @@ async function getProducts() {
     products.push(product);
   }
 
-  console.log("PRODUCTS", products)
-  // Lire le fichier CSV
-  
   return products;
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../NavBar";
 import Footer from "../Footer";
-import RootLayout from "../layout";
 import HeaderSimple from "../headerSimple";
 import Section from "../Section";
 import Cards from "../Cards";
@@ -15,17 +14,16 @@ import CategoriesCards from "../CategoriesCards"
 
 async function Catalogue() {
   const pageTitle = 'Produits';
-  const pageDescription = 'Catalogue des produits électroménager TV son image Frigo Four...';
   // const page = Pages["catalogue"];
   const products = await getProducts();
   return (
-    <RootLayout pageTitle={pageTitle} pageDescription={pageDescription}>
+    <>
       <Navbar />
       <HeaderSimple title={pageTitle}/>
       <ProductCategoriesList products = {products}/>
       <ProductCards products = {products}/>
       <Footer />
-    </RootLayout>
+    </>
   );
 };
 

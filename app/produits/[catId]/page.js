@@ -1,79 +1,73 @@
-import React from "react";
+import { notFound } from "next/navigation";
 import Navbar from "../../NavBar";
 import Footer from "../../Footer";
-import RootLayout from "../../layout";
 import HeaderSimple from "../../headerSimple";
-import { Pages } from "../../site";
 import getProducts from "../../getProducts";
 import ProductCards from "../../ProductCards";
 import ProductCategoriesList from "../../ProductCategoriesList";
 import getCategories from "../../getCategories";
 
-const getCategoryNameFromId = (categories, categoryId) => {
-  let category = null; // Initialisation de la variable category à null
+const applianceGroups = [
+  { id: "froid", title: "Réfrigérateurs et congélateurs", types: ["Réfrigérateur", "Congélateur"] },
+  { id: "linge", title: "Lave-linge et sèche-linge", types: ["Lave-linge", "Sèche-linge"] },
+  { id: "vaisselle", title: "Lave-vaisselle", types: ["Lave-vaisselle"] },
+  { id: "cuisson", title: "Fours, plaques et cuisinières", types: ["Four", "Plaque de cuisson", "Cuisinière", "Micro-ondes", "Cuisson"] },
+  { id: "hottes", title: "Hottes", types: ["Hotte"] },
+];
 
-  categories.map((categorie) => {
-    if (categoryId == categorie.category_id) {
-      console.log(categoryId, " =>", categorie.category_name);
-      category = categorie.category_name;
-    }
-  });
-
-  return category;
-};
-
-const filterProductsByCategoryId = (products, categories, categoryId) => {
-  const categoryName = getCategoryNameFromId(categories, categoryId);
-  console.log("categoryName", categoryName);
-  if (!categoryName) {
-    console.error(`No category found with ID: ${categoryId}`);
-    return [];
+function ApplianceGroups({ products }) {
+  const groups = applianceGroups.map((group) => ({ ...group, products: [] }));
+  const other = { id: "autres", title: "Autres appareils", products: [] };
+  for (const product of products) {
+    const group = groups.find(({ types }) => types.includes(product.cat1)) ?? other;
+    group.products.push(product);
   }
-  return products.filter((product) =>
-    product["Catégories"].includes(categoryName)
-  );
-};
-
-async function Catalogue({ params }) {
-  const categoryId = params.catId;
-
-  
-  const pageDescription =
-    "Catalogue des produits électroménager TV son image Frigo Four...";
-  
-  const products = await getProducts();
-  const categories = getCategories({ products });
-  const filterProducts = filterProductsByCategoryId(
-    products,
-    categories,
-    categoryId
-  );
-  const pageTitle = getCategoryNameFromId(categories, categoryId);
-  console.log("filter", filterProducts, "id=", categoryId);
+  const available = [...groups, other].filter((group) => group.products.length > 0);
 
   return (
-    <RootLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-      <Navbar />
-      <HeaderSimple title={pageTitle} />
-
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
-        {/* Colonne de gauche pour la liste des catégories */}
-        <div className="md:col-span-2">
-          <ProductCategoriesList products={products} category_id={categoryId} />
-        </div>
-
-        {/* Colonne centrale vide pour l'espace */}
-        {/* <div className="hidden md:block md:col-span-1"></div> */}
-
-        {/* Colonne de droite pour les cartes de catégories */}
-        <div className="md:col-span-9">
-          <ProductCards products={filterProducts} />
-        </div>
-      </div>
-
-      <Footer />
-    </RootLayout>
+    <>
+      <nav aria-label="Types de gros électroménager" className="flex flex-wrap gap-2 px-2 pb-6">
+        {available.map(({ id, title, products }) => (
+          <a key={id} href={`#${id}`} className="rounded-full border border-bluechantrel-950 px-4 py-2 text-sm font-semibold hover:bg-white">
+            {title} ({products.length})
+          </a>
+        ))}
+      </nav>
+      {available.map(({ id, title, products }) => (
+        <section key={id} id={id} aria-labelledby={`${id}-titre`} className="mb-8 scroll-mt-8">
+          <h2 id={`${id}-titre`} className="mx-2 border-b border-bluechantrel-950/25 pb-3 text-xl font-bold">{title}</h2>
+          <ProductCards products={products} />
+        </section>
+      ))}
+    </>
   );
 }
 
-export default Catalogue;
+export default async function Catalogue({ params }) {
+  const { catId } = await params;
+  const products = await getProducts();
+  const category = getCategories({ products }).find(({ category_id }) => String(category_id) === catId);
+  if (!category) notFound();
+
+  const categoryProducts = products.filter((product) => product["Catégories"].trim() === category.category_name);
+
+  return (
+    <>
+      <Navbar />
+      <HeaderSimple title={category.category_name} />
+      <main className="container mx-auto grid grid-cols-1 gap-4 px-3 md:grid-cols-12">
+        <aside className="md:col-span-2">
+          <ProductCategoriesList products={products} category_id={catId} />
+        </aside>
+        <div className="md:col-span-10">
+          {category.category_name === "Gros électroménager" ? (
+            <ApplianceGroups products={categoryProducts} />
+          ) : (
+            <ProductCards products={categoryProducts} />
+          )}
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}

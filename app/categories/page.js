@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 
 // MyPage.js
 import getAllTaxons from "../sylius/getAllTaxons";

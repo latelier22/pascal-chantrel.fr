@@ -20,7 +20,7 @@ async function MyPage ({ params }) {
   }
 
         const taxons = await getTaxonsWithImages();
-        const targetSlug = params.taxonSlug;
+        const { taxonSlug: targetSlug } = await params;
 
         console.log("param", targetSlug)
 

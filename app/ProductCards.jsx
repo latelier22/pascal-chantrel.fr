@@ -1,19 +1,16 @@
-import Link from 'next/link';
-import ProductCard from './ProductCard';
+import Link from "next/link";
+import ProductCard from "./ProductCard";
 
-const ProductCards = ({ products }) => {
-    return (
-      <header>
-        <div className="container mx-auto py-2 md:py-8 md:px-12 lg:px-20 lg:py-12 animate-appear">
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {products.map((product, index) => (
-              <Link key={product['id']} href={`/produit/${product['id']}`}>
-              <ProductCard key={index} product={product} />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
-    );
-  };
-  export default ProductCards;
+export default function ProductCards({ products }) {
+  return (
+    <div className="container mx-auto py-2 md:px-4 md:py-6 animate-appear">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => (
+          <Link key={product.id} href={`/produit/${encodeURIComponent(product.id)}`}>
+            <ProductCard product={product} />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

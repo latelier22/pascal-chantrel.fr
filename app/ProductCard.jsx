@@ -7,11 +7,17 @@ const ProductCard = ({ product }) => {
             className="block relative rounded-t-lg overflow-hidden w-full h-0"
             style={{ paddingTop: "100%" }}
           >
-            <img
-              className="absolute top-0 left-0 w-full h-full object-cover object-center"
-              src={product['image-1']}
-              alt={product['Désignation']}
-            />
+            {product['image-1'] ? (
+              <img
+                className="absolute top-0 left-0 w-full h-full object-cover object-center"
+                src={product['image-1']}
+                alt={product['Désignation']}
+              />
+            ) : (
+              <span className="absolute inset-0 grid place-items-center bg-neutral-100 text-neutral-600">
+                Photo à venir
+              </span>
+            )}
           </div>
   
           <div className="bg-bluechantrel-950 px-6 py-4 flex flex-col text-white text-right">

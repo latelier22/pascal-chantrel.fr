@@ -11,11 +11,17 @@ const CategoryCard = ({ category }) => {
             className="w-full bg-black relative"
             style={{ paddingBottom: "100%" }}
           >
-            <img
-              src={category.category_image}
-              alt={category.category_name}
-              className="absolute top-0 left-0 w-full h-full object-cover"
-            />
+            {category.category_image ? (
+              <img
+                src={category.category_image}
+                alt={category.category_name}
+                className="absolute top-0 left-0 w-full h-full object-cover"
+              />
+            ) : (
+              <span className="absolute inset-0 grid place-items-center bg-neutral-100 text-neutral-600">
+                Photo à venir
+              </span>
+            )}
           </div>
 
           {/* Texte centré horizontalement et verticalement */}

@@ -34,3 +34,45 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Actualiser le catalogue depuis le stock
+
+Déposer l'export CSV dans `public/stock/`, puis lancer depuis la racine du dépôt
+avec Python 3.8 ou supérieur.
+
+```sh
+pnpm run stock:import public/stock/03042026.CSV
+```
+
+La commande prépare les 40 références les plus récentes par date de création,
+avec stock et prix public positifs. `--limit 60` permet de modifier la taille
+de la sélection. Les familles d'appareils et les exclusions sont dans
+`scripts/import-stock.py`. Le rapport indique les codes famille et sous-famille
+écartés pour faciliter l'ajustement des règles.
+
+Les résultats sont dans `.stock-import/` :
+
+- `selection.csv` contient les produits proposés, dans l'ordre de sélection.
+- `rapport.json` résume le tri, les familles écartées et les données manquantes.
+- `images-manquantes.csv` donne un lien de recherche par référence exacte,
+  ainsi que la fiche source et l'erreur de téléchargement lorsqu'elles existent.
+
+Les visuels locaux sont réutilisés par référence. Pour un nouveau modèle,
+renseigner sa référence normalisée dans `scripts/stock-image-sources.json`
+avec `brand` et `page`. Pour une fiche dont l'URL du visuel contient la
+référence exacte, le script récupère automatiquement l’image principale.
+On peut aussi renseigner l'URL HTTPS directe `image` d'un visuel utilisable
+pour ce modèle. L'option `--download-images` récupère les visuels référencés
+et les conserve dans `public/images/stock/` pour les prochains imports.
+
+```sh
+pnpm run stock:import public/stock/03042026.CSV --download-images
+pnpm run stock:import public/stock/03042026.CSV --apply
+```
+
+`--apply` remplace le catalogue local utilisé par `/electromenager` et
+`/produits` après relecture de la sélection. Les pages Sylius continuent à
+interroger leur API. Les exports fournisseur et les rapports sont ignorés
+par Git. Next.js bloque l'accès HTTP à `/stock/`, qui contient les prix
+d'achat. En cas de publication de fichiers statiques par un autre serveur,
+exclure `public/stock/` de ce déploiement.
