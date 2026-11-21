@@ -28,7 +28,7 @@ export default function HomeCatalogue({ products }) {
   const visible = expanded || terms.length ? matching : matching.slice(0, 4);
 
   return (
-    <section className={styles.catalogue} id="catalogue" aria-labelledby="catalogue-title">
+    <section data-reveal className={styles.catalogue} id="catalogue" aria-labelledby="catalogue-title">
       <div className={styles.sectionHeading}>
         <h2 id="catalogue-title">Le catalogue</h2>
         <Link className={styles.textLink} href="/electromenager">Voir tous les rayons</Link>

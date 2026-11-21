@@ -6,19 +6,17 @@ import getAllTaxons from "../sylius/getAllTaxons";
 import getTaxonsImages from "../sylius/getAllTaxonsImages";
 import getTaxonImage from "../sylius/getCategoryImage";
 import { FILTER_SETS } from "../sylius/index";
-import RootLayout from "../layout";
-import Navbar from "../NavBar";
-import Footer from "../Footer";
-import Title from "../Title";
+import HeaderSimple from "../headerSimple";
+import { redirect } from "next/navigation";
+import styles from "../home.module.css";
 import Cards from "../Cards";
 
 const PLACEHOLDER_IMAGE_URL = "https://via.placeholder.com/150";
 
 
 async function Categorie() {
-  const getTaxons = await getAllTaxons();
-  const taxonsImages = await getTaxonsImages();
-  console.log("getTaxons",getTaxons);
+  const [getTaxons, taxonsImages] = await Promise.all([getAllTaxons(), getTaxonsImages()])
+    .catch(() => redirect("/electromenager"));
   // console.log("taxonsImages",taxonsImages);
   
 
@@ -44,7 +42,6 @@ async function Categorie() {
     })
   );
 
-  console.log(updatedTaxons);
 
   const cards = updatedTaxons.map((taxon) => {
     const link = `/${taxon.slug}`;
@@ -63,33 +60,14 @@ async function Categorie() {
     };
   });
 
-  console.log("cards", cards)
-
-  const pageTitle = "Boutique Sylius";
-  const pageDescription =
-    "A venir, tous les jeux et jouets pour petits et grands disponibles à la vente en ligne, et toujours au repaire des p'tits loups";
-
-  const backgroundColor = "bg-teal-500";
 
   return (
-    
-      <RootLayout pageTitle={pageTitle} pageDescription={pageDescription}>
-        <Navbar />
-        <Title
-          myTitle={pageTitle}
-          mySubTitle={pageDescription}
-          backgroundColor={backgroundColor}
-        />
-
-        <div className="bg-teal-200">
-          <Cards cards={cards} buttonColor={backgroundColor} syliusCard={true} />
-        </div>
-
-        {/* <MyModal /> */}
-
-        <Footer backgroundColor={backgroundColor} />
-      </RootLayout>
-    
+    <main>
+      <HeaderSimple title="Boutique" />
+      <div className={styles.container} data-reveal>
+        <Cards cards={cards} syliusCard={true} />
+      </div>
+    </main>
   );
 }
 

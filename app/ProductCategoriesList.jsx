@@ -1,26 +1,19 @@
-import Link from 'next/link';
-import getCategories from './getCategories';
+import Link from "next/link";
+import getCategories from "./getCategories";
+import styles from "./home.module.css";
 
-const ProductCategoriesList = ({ products, category_id }) => {
-  const categoriesList = getCategories({ products });
-
+export default function ProductCategoriesList({ products, category_id }) {
   return (
-    <div>
-      <Link href={`/electromenager`}>
-        <h2 className="text-2xl font-bold mb-4">Catégories</h2>
-      </Link>
+    <nav aria-label="Rayons du catalogue" className={styles.rayons}>
+      <Link href="/electromenager" className={styles.textLink}>Tous les rayons</Link>
       <ul>
-        {categoriesList.map((category) => (
-          // ${category.category_id === category_id ? 'border-orange' : ''}
-          <li key={category.category_id} className={`text-lg text-bluechantrel-950 border-2 rounded-lg hover:bg-orange hover:border-white hover:text-orange-400 my-2 px-4 py-2 ${category.category_id == category_id ? 'border-orange-400' : ''} `}>
-            <Link href={`/produits/${category.category_id}`}>
-              {category.category_name}
-            </Link>
+        {getCategories({ products }).map((category) => (
+          <li key={category.category_id}>
+            <Link aria-current={String(category.category_id) === String(category_id) ? "page" : undefined}
+              href={`/produits/${category.category_id}`}>{category.category_name}</Link>
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
-};
-
-export default ProductCategoriesList;
+}

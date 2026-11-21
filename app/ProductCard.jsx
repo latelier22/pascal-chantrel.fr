@@ -1,39 +1,29 @@
-const ProductCard = ({ product }) => {
-    return (
-      <header>
-        <div className="block md:mx-10 rounded-lg border-4 border-gold-700 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
-          <div
-           
-            className="block relative rounded-t-lg overflow-hidden w-full h-0"
-            style={{ paddingTop: "100%" }}
-          >
-            {product['image-1'] ? (
-              <img
-                className="absolute top-0 left-0 w-full h-full object-cover object-center"
-                src={product['image-1']}
-                alt={product['Désignation']}
-              />
-            ) : (
-              <span className="absolute inset-0 grid place-items-center bg-neutral-100 text-neutral-600">
-                Photo à venir
-              </span>
-            )}
-          </div>
-  
-          <div className="bg-bluechantrel-950 px-6 py-4 flex flex-col text-white text-right">
-            <div className="font-bold text-xl mb-2">{product['cat1']}</div>
-            <div className="font-bold text-xl mb-2">{product['ref_simple']}</div>
-            <div className="font-bold text-xl mb-2 whitespace-normal break-words">{product['Désignation']}</div>
-            <p className="text-gray-300 text-base truncate">
-              Prix: {product['Prix public 1']} €
-            </p>
-            <p className="text-gray-700 text-base truncate">
-              Stock: {product['Stock final des 12 mois']}
-            </p>
-          </div>
-        </div>
-      </header>
-    );
-  };
-  
-  export default ProductCard;
+import Image from "next/image";
+import styles from "./home.module.css";
+
+const euros = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" });
+
+export default function ProductCard({ product, detail = false }) {
+  const title = [product.cat1, product.nom_marque].filter(Boolean).join(" ");
+  const price = euros.format(Number(product["Prix public 1"].replace(",", ".")));
+  const stock = Number(product["Stock final des 12 mois"].replace(",", "."));
+  const Heading = detail ? "h1" : "h3";
+
+  return (
+    <article className={detail ? styles.productDetail : styles.product} data-reveal>
+      <div className={detail ? styles.detailPhoto : styles.productPhoto}>
+        {product["image-1"] ? (
+          <Image src={product["image-1"]} alt={detail ? `${title} ${product.ref_simple}` : ""}
+            fill sizes={detail ? "(max-width: 640px) 100vw, 560px" : "(max-width: 640px) 50vw, 300px"} />
+        ) : <span>Photo à venir</span>}
+      </div>
+      <div className={detail ? styles.detailCopy : styles.productCopy}>
+        <Heading>{title}</Heading>
+        <p>{product.ref_simple}</p>
+        {detail && <p className={styles.description}>{product["Désignation"]}</p>}
+        <strong>{price}</strong>
+        {detail && <p className={styles.availability}>{stock > 0 ? `En stock · ${stock} disponible${stock > 1 ? "s" : ""}` : "Disponibilité sur demande"}</p>}
+      </div>
+    </article>
+  );
+}

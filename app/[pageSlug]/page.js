@@ -1,49 +1,27 @@
-// MyPage.js
-
-import React from "react";
-import Navbar from "../NavBar";
-import Footer from "../Footer";
-import RootLayout from "../layout";
+import { notFound } from "next/navigation";
 import HeaderSimple from "../headerSimple";
-import Section from "../Section";
 import Cards from "../Cards";
-import MyLightBox from "../MyLightBox"
+import MyLightBox from "../MyLightBox";
 import { Pages } from "../site";
+import styles from "../home.module.css";
 
-const MyPage = async ({ params }) => {
+export default async function ServicePage({ params }) {
   const { pageSlug } = await params;
-  const page = Pages[pageSlug];
-  if (!page) {
-    return (
-      <RootLayout >
-        <div className="min-h-screen flex flex-col justify-center items-center">
-          <h1>Page non trouvée</h1>
-        </div>
-      </RootLayout>
-    );
-  }
+  const page = Object.hasOwn(Pages, pageSlug) ? Pages[pageSlug] : null;
+  if (!page) notFound();
   return (
-    <RootLayout pageTitle={page.title} pageDescription={page.description}>
-
-      <Navbar />
-
-      <HeaderSimple photos={page.photos} title={page.title}/>
-
-      {/* <ImagesBar photos={page.photos} /> */}
-      <MyLightBox photos={page.photos} />
-
-      {page.sections.map((section, index) => (
-        <Section key={index} section={section} />
-      ))}
-     
-
-      <div className="">
-        <Cards cards={page.cards}  />
+    <main>
+      <HeaderSimple title={page.title} description={page.description} />
+      <div className={styles.container}>
+        {page.photos?.length > 0 && <div data-reveal><MyLightBox photos={page.photos} /></div>}
+        {page.sections?.map((section) => (
+          <section key={section.title} className={styles.serviceArticle} data-reveal>
+            <h2>{section.title}</h2>
+            <div>{section.body}</div>
+          </section>
+        ))}
+        {page.cards?.length > 0 && <Cards cards={page.cards} />}
       </div>
-
-      <Footer />
-    </RootLayout>
+    </main>
   );
-};
-
-export default MyPage;
+}

@@ -1,37 +1,54 @@
-import React from 'react';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import './page.module.css';
-import { site } from './site';
+import { Inter } from "next/font/google";
+import Link from "next/link";
+import Image from "next/image";
+import "./globals.css";
+import "./page.module.css";
+import { site } from "./site";
+import ScrollReveal from "./ScrollReveal";
+import styles from "./home.module.css";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
-const siteMetadata = site;
+export const metadata = {
+  title: site.title,
+  description: site.description,
+};
 
-export default function RootLayout({
-  children
-}) 
-{
-  const siteTitle = siteMetadata.title;
-  const siteDescription = siteMetadata.description;
-
-  const title = `${siteTitle}`;
-  const description = `${siteDescription}`;
-  // const title = `${siteTitle} | ${pageTitle || ''}`;
-  // const description = `${siteDescription} | ${pageDescription || ''}`;
-
+export default function RootLayout({ children }) {
+  const telephone = `tel:+33${site.portable.replaceAll(" ", "").slice(1)}`;
   return (
-    <html lang="en" className="">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        {/* Add other meta tags if needed */}
-      </head>
-      <body className={`${inter.className} bg-sky-200 text-black`}>
-        {children}
+    <html lang="fr">
+      <body className={`${inter.className} ${styles.site}`}>
+        <header className={styles.header}>
+          <div className={styles.headerInner}>
+            <Link className={styles.logo} href="/" aria-label="Pascal Chantrel, accueil">
+              <Image src="/images/logo-banniere.png" width={749} height={189} alt="Pascal Chantrel" priority />
+            </Link>
+            <nav aria-label="Navigation principale" className={styles.navigation}>
+              <Link href="/electromenager">Électroménager</Link>
+              <Link href="/antennes-tv">Antennes TV</Link>
+              <Link href="/ramonage">Ramonage</Link>
+            </nav>
+            <a className={styles.phone} href={telephone}>{site.portable}</a>
+          </div>
+        </header>
+        <div className={styles.pageBody}>{children}</div>
+        <footer className={styles.footer}>
+          <div className={styles.footerInner}>
+            <div>
+              <strong>Pascal Chantrel</strong>
+              <p>{site.adresse}, {site.codePostal} Loudéac</p>
+              <p>SIRET {site.SIRET}</p>
+            </div>
+            <div className={styles.footerLinks}>
+              <a href={telephone}>{site.portable}</a>
+              <Link href="/contact">Formulaire de contact</Link>
+              <a href={site.facebook}>Facebook</a>
+            </div>
+          </div>
+        </footer>
+        <ScrollReveal />
       </body>
     </html>
   );
-};
+}

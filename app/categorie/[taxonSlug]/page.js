@@ -1,8 +1,9 @@
 
 // MyPage.js
 import {API_URL_BASE} from "../../sylius"
-import { Suspense} from "react";
-import getAllTaxons from '../../sylius/getAllTaxons';
+import { redirect } from "next/navigation";
+import HeaderSimple from "../../headerSimple";
+import styles from "../../home.module.css";
 import GetProductsByTaxonCode from "../../sylius/GetProductsByTaxonCode";
 import GetProductVariant from "../../sylius/GetProductVariant";
 import getTaxonsWithImages from "../../sylius/getCategoriesWithImages";
@@ -19,7 +20,7 @@ async function MyPage ({ params }) {
     return null;
   }
 
-        const taxons = await getTaxonsWithImages();
+        const taxons = await getTaxonsWithImages().catch(() => redirect("/electromenager"));
         const { taxonSlug: targetSlug } = await params;
 
         console.log("param", targetSlug)
@@ -28,7 +29,7 @@ async function MyPage ({ params }) {
         
         console.log("taxonCode",taxonCode,taxons)
 
-        const products = await GetProductsByTaxonCode(taxonCode);
+        const products = await GetProductsByTaxonCode(taxonCode).catch(() => redirect("/electromenager"));
 
 
         console.log("products",products)
@@ -48,7 +49,7 @@ async function MyPage ({ params }) {
         const updatedProducts = await Promise.all(
           products.map(async (product) => {
             if (product.variants && product.variants.length > 0) {
-              const imagethumbnailPath = product.images[0].path.split("/media/image")[1]
+              const imagethumbnailPath = product.images?.[0]?.path?.split("/media/image")[1]
               const defaultVariantData = await getDefaultVariant(product.variants[0]);
               return { ...product, imagethumbnailPath, defaultVariant: defaultVariantData };
             }
@@ -58,7 +59,9 @@ async function MyPage ({ params }) {
 
 
   return (
-    <Suspense>
+    <main>
+      <HeaderSimple title="Boutique" />
+      <div className={styles.container} data-reveal>
       <div>
         CATEGORIES:
         {taxons.map((taxon) => (
@@ -79,7 +82,7 @@ async function MyPage ({ params }) {
             
             {product.defaultVariant && (
               <div>
-                Default Variant: {formatPrice(product.defaultVariant.price)}
+                Prix : {formatPrice(product.defaultVariant.price)}
                 {/* Ajoutez d'autres propriétés de variantes ici si nécessaire */}
               </div>
             )}
@@ -88,7 +91,8 @@ async function MyPage ({ params }) {
        
 
       </div>
-    </Suspense>
+      </div>
+    </main>
   );
 };
 

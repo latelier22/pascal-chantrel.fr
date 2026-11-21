@@ -1,6 +1,5 @@
+import styles from "../../home.module.css";
 import { notFound } from "next/navigation";
-import Navbar from "../../NavBar";
-import Footer from "../../Footer";
 import HeaderSimple from "../../headerSimple";
 import getProducts from "../../getProducts";
 import ProductCards from "../../ProductCards";
@@ -26,16 +25,16 @@ function ApplianceGroups({ products }) {
 
   return (
     <>
-      <nav aria-label="Types de gros électroménager" className="flex flex-wrap gap-2 px-2 pb-6">
+      <nav aria-label="Types de gros électroménager" className={styles.subnav}>
         {available.map(({ id, title, products }) => (
-          <a key={id} href={`#${id}`} className="rounded-full border border-bluechantrel-950 px-4 py-2 text-sm font-semibold hover:bg-white">
+          <a key={id} href={`#${id}`} className={styles.subnavLink}>
             {title} ({products.length})
           </a>
         ))}
       </nav>
       {available.map(({ id, title, products }) => (
-        <section key={id} id={id} aria-labelledby={`${id}-titre`} className="mb-8 scroll-mt-8">
-          <h2 id={`${id}-titre`} className="mx-2 border-b border-bluechantrel-950/25 pb-3 text-xl font-bold">{title}</h2>
+        <section key={id} id={id} aria-labelledby={`${id}-titre`} className={styles.productSection}>
+          <h2 id={`${id}-titre`} className={styles.sectionTitle}>{title}</h2>
           <ProductCards products={products} />
         </section>
       ))}
@@ -53,13 +52,13 @@ export default async function Catalogue({ params }) {
 
   return (
     <>
-      <Navbar />
+
       <HeaderSimple title={category.category_name} />
-      <main className="container mx-auto grid grid-cols-1 gap-4 px-3 md:grid-cols-12">
-        <aside className="md:col-span-2">
+      <main className={styles.container}>
+        <aside>
           <ProductCategoriesList products={products} category_id={catId} />
         </aside>
-        <div className="md:col-span-10">
+        <div>
           {category.category_name === "Gros électroménager" ? (
             <ApplianceGroups products={categoryProducts} />
           ) : (
@@ -67,7 +66,7 @@ export default async function Catalogue({ params }) {
           )}
         </div>
       </main>
-      <Footer />
+
     </>
   );
 }

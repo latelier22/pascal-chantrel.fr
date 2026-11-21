@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import getProducts from "./getProducts";
 import HomeCatalogue from "./HomeCatalogue";
-import { site } from "./site";
+import HomeHeroVisual from "./HomeHeroVisual";
 import styles from "./home.module.css";
 
 export const metadata = {
@@ -40,24 +40,7 @@ export default async function Home() {
     image: product["image-1"],
     price: priceFormatter.format(Number(product["Prix public 1"].replace(",", "."))),
   }));
-  const telephone = `tel:+33${site.portable.replaceAll(" ", "").slice(1)}`;
-
   return (
-    <div className={styles.site}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <Link className={styles.logo} href="/" aria-label="Pascal Chantrel, accueil">
-            <Image src="/images/logo-banniere.png" width={749} height={189} alt="Pascal Chantrel" priority />
-          </Link>
-          <nav aria-label="Navigation principale" className={styles.navigation}>
-            <Link href="/electromenager">Électroménager</Link>
-            <Link href="/antennes-tv">Antennes TV</Link>
-            <Link href="/ramonage">Ramonage</Link>
-          </nav>
-          <a className={styles.phone} href={telephone}>{site.portable}</a>
-        </div>
-      </header>
-
       <main className={styles.container}>
         <section className={styles.hero} aria-labelledby="home-title">
           <div className={styles.heroContent}>
@@ -69,16 +52,12 @@ export default async function Home() {
               <Link className={styles.secondary} href="/contact">Nous contacter</Link>
             </div>
           </div>
-          <div className={styles.heroVisual} aria-hidden="true">
-            <div className={styles.heroOrbit} />
-            <Image className={styles.fridge} src="/images/stock/b12ba25ad45da7f74acf0205.jpg" width={350} height={600} alt="" priority />
-            <Image className={styles.washer} src="/images/stock/6207e6b302a2b4e997e3d37d.jpg" width={360} height={440} alt="" priority />
-          </div>
+          <HomeHeroVisual />
         </section>
 
         <HomeCatalogue products={products} />
 
-        <section className={styles.services} aria-labelledby="services-title">
+        <section data-reveal className={styles.services} aria-labelledby="services-title">
           <h2 id="services-title">Nos interventions à Loudéac</h2>
           <div className={styles.serviceGrid}>
             {services.map((service) => (
@@ -94,18 +73,5 @@ export default async function Home() {
         </section>
       </main>
 
-      <footer className={styles.footer}>
-        <div className={styles.footerInner}>
-          <div>
-            <strong>Pascal Chantrel</strong>
-            <p>{site.adresse}, {site.codePostal} Loudéac</p>
-          </div>
-          <div className={styles.footerLinks}>
-            <a href={telephone}>{site.portable}</a>
-            <Link href="/contact">Formulaire de contact</Link>
-          </div>
-        </div>
-      </footer>
-    </div>
   );
 }

@@ -1,30 +1,18 @@
-import React from "react";
-import Navbar from "../NavBar";
-import Footer from "../Footer";
 import HeaderSimple from "../headerSimple";
-import Section from "../Section";
-import Cards from "../Cards";
-import MyLightBox from "../MyLightBox"
-import { Pages } from "../site";
-import getProducts from "../getProducts"
-import ProductList from "../ProductsList"
-import ProductCards from "../ProductCards"
-import ProductCategoriesList from "../ProductCategoriesList"
-import CategoriesCards from "../CategoriesCards"
+import getProducts from "../getProducts";
+import ProductCards from "../ProductCards";
+import ProductCategoriesList from "../ProductCategoriesList";
+import styles from "../home.module.css";
 
-async function Catalogue() {
-  const pageTitle = 'Produits';
-  // const page = Pages["catalogue"];
+export default async function Catalogue() {
   const products = await getProducts();
   return (
-    <>
-      <Navbar />
-      <HeaderSimple title={pageTitle}/>
-      <ProductCategoriesList products = {products}/>
-      <ProductCards products = {products}/>
-      <Footer />
-    </>
+    <main>
+      <HeaderSimple title="Tous les produits" />
+      <div className={styles.container}>
+        <ProductCategoriesList products={products} />
+        <ProductCards products={products} />
+      </div>
+    </main>
   );
-};
-
-export default Catalogue;
+}
