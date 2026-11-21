@@ -183,3 +183,9 @@ body { font-family: Arial, sans-serif; }
   .christmas-slide::after, .christmas-photo, .christmas-copy, .christmas-progress { animation: none; }
   .christmas-progress { display: none; }
 }
+
+#screen > .standard-slide { background: #28314e; background: linear-gradient(140deg, #465782, #161e34 68%); }
+.standard-slide::before { background: #465a83; border-color: #c0a97a; opacity: .5; }
+.standard-slide::after { display: none; }
+.christmas-label { max-width: 48%; overflow: hidden; text-overflow: ellipsis; }
+.product-no-photo { color: #4a5266; font-size: 4vmin; }

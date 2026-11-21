@@ -1,3 +1,4 @@
+import catalogueSlides from "../../catalogueSlides";
 import { isSlideshowAdmin, slideshowAuthRequired } from "../../auth";
 import { addImage, maxImageSize, PlaylistError, readPlaylist, savePlaylist } from "../../store";
 
@@ -37,7 +38,7 @@ export function POST(request) {
 
 export function PUT(request) {
   return run(request, async () => {
-    const { revision, slides } = await request.json().catch(() => { throw new PlaylistError("Liste invalide."); }) || {};
-    return savePlaylist(revision, slides);
+    const { revision, slides, programmes, screens } = await request.json().catch(() => { throw new PlaylistError("Liste invalide."); }) || {};
+    return savePlaylist(revision, slides, programmes, screens, programmes === undefined ? [] : await catalogueSlides(true));
   });
 }

@@ -99,3 +99,11 @@ la sélection de Noël générée depuis les produits photographiés et disponib
 du catalogue. Les prix suivent le catalogue et chaque produit reste affiché
 sept secondes. Un visuel personnalisé actif remplace cette sélection sur
 l’écran auquel il est affecté.
+
+L’onglet « Diaporamas et écrans » permet de créer plusieurs listes à partir
+du catalogue et des images chargées dans « Mes images ». Chaque liste a ses
+liens de lecture dédiés dans les deux formats. Les adresses fixes
+`/diaporama/horizontal` et `/diaporama/vertical` suivent l’affectation choisie
+dans l’administration. Le mode automatique conserve le fonctionnement
+d’origine et « Sélection de Noël » force le catalogue festif. Les références
+de produits restent liées au catalogue et reprennent ses prix après import.

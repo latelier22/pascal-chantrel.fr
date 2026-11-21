@@ -8,12 +8,12 @@ const euros = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 2,
 });
 
-export default async function catalogueSlides() {
+export default async function catalogueSlides(includeAll = false) {
   const products = await getProducts();
   return products.flatMap((product) => {
     const price = Number(product["Prix public 1"].replace(",", "."));
     const stock = Number(product["Stock final des 12 mois"].replace(",", "."));
-    if (!product["image-1"] || !(stock > 0) || !(price > 0)) return [];
+    if (!includeAll && (!product["image-1"] || !(stock > 0) || !(price > 0))) return [];
     const details = specifications[product.ref_simple];
     const title = details?.title || [product.cat1, product.nom_marque].filter(Boolean).join(" ");
     const facts = details?.facts ?? {};
@@ -25,10 +25,11 @@ export default async function catalogueSlides() {
       title,
       reference: product.ref_simple,
       category: product["Catégories"] === "Tv - Image - Son" ? "TV, image et son" : product["Catégories"],
-      price: euros.format(price),
+      price: price > 0 ? euros.format(price) : "Prix sur demande",
       feature,
       energy: energy ? `Classe ${energy.class}${energy.mode ? ` · ${energy.mode}` : ""}` : undefined,
       duration: 7,
+      available: stock > 0,
     }];
   });
 }

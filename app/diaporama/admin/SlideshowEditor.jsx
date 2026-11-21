@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import ProgrammeEditor from "./ProgrammeEditor";
 import styles from "./editor.module.css";
 
 const api = "/diaporama/admin/api";
@@ -14,33 +15,35 @@ async function request(options) {
   return data;
 }
 
-export default function SlideshowEditor() {
+export default function SlideshowEditor({ catalogue }) {
   const [playlist, setPlaylist] = useState(null);
   const [slides, setSlides] = useState([]);
+  const [programmes, setProgrammes] = useState([]);
+  const [screens, setScreens] = useState({ horizontal: "auto", vertical: "auto" });
+  const [tab, setTab] = useState("programmes");
   const [dirty, setDirty] = useState(false);
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState(null);
 
-  function apply(data) {
-    setPlaylist(data);
-    setSlides(data.slides);
-    setDirty(false);
-  }
-
-  async function run(job, success) {
+  const run = useCallback(async (job, success) => {
     setBusy(true);
     setFeedback(null);
     try {
-      apply(await job());
+      const data = await job();
+      setPlaylist(data);
+      setSlides(data.slides);
+      setProgrammes(data.programmes);
+      setScreens(data.screens);
+      setDirty(false);
       if (success) setFeedback({ text: success });
     } catch (error) {
       setFeedback({ text: error.message, error: true });
     } finally {
       setBusy(false);
     }
-  }
+  }, []);
 
-  useEffect(() => { run(() => request()); }, []);
+  useEffect(() => { run(() => request()); }, [run]);
   useEffect(() => {
     if (!dirty) return;
     const protect = (event) => { event.preventDefault(); event.returnValue = ""; };
@@ -75,7 +78,7 @@ export default function SlideshowEditor() {
       const result = await request({ method: "POST", body: data });
       form.reset();
       return result;
-    }, "Image ajoutée. Active-la, puis enregistre pour la diffuser.");
+    }, "Image ajoutée. Tu peux l’ajouter à un diaporama ou l’activer en mode automatique.");
   }
 
   function save(event) {
@@ -83,7 +86,15 @@ export default function SlideshowEditor() {
     run(() => request({
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ revision: playlist.revision, slides: slides.map((slide) => ({ ...slide, duration: Number(slide.duration) })) }),
+      body: JSON.stringify({
+        revision: playlist.revision,
+        slides: slides.map((slide) => ({ ...slide, duration: Number(slide.duration) })),
+        programmes: programmes.map((programme) => ({
+          ...programme,
+          items: programme.items.map((item) => ({ ...item, duration: Number(item.duration) })),
+        })),
+        screens,
+      }),
     }), "Diaporama enregistré. Les écrans se mettent à jour automatiquement.");
   }
 
@@ -94,21 +105,36 @@ export default function SlideshowEditor() {
         <Link href="/diaporama/horizontal" target="_blank">Écran horizontal (16:9)</Link>
         <Link href="/diaporama/vertical" target="_blank">Écran vertical (9:16)</Link>
       </nav>
-      <p>La sélection de Noël du catalogue s’affiche sur chaque écran tant qu’aucun visuel personnalisé n’y est activé.</p>
+
       {feedback && <p className={styles.feedback} role={feedback.error ? "alert" : "status"}>{feedback.text}</p>}
       {!playlist ? (
         busy ? <p>Chargement…</p> : <button type="button" onClick={() => run(() => request())}>Réessayer</button>
       ) : (
         <>
-          <form className={styles.upload} onSubmit={upload}>
+          <div className={styles.tabs} role="group" aria-label="Gestion du diaporama">
+            <button type="button" aria-pressed={tab === "programmes"} onClick={() => setTab("programmes")}>Diaporamas et écrans</button>
+            <button type="button" aria-pressed={tab === "images"} onClick={() => setTab("images")}>Mes images</button>
+          </div>
+          {tab === "images" && <form className={styles.upload} onSubmit={upload}>
             <label>Ajouter un visuel <input type="file" name="image" accept="image/jpeg,image/png" required disabled={busy || dirty} /></label>
             <button type="submit" disabled={busy || dirty}>Ajouter</button>
             {dirty ? <p>Enregistre tes modifications avant d’ajouter une image.</p> : <p>Format JPG ou PNG, 10 Mo maximum.</p>}
-          </form>
+          </form>}
           <form onSubmit={save}>
             <fieldset disabled={busy}>
-              {slides.length === 0 && <p>Aucun visuel ajouté.</p>}
-              <ol className={styles.list}>
+              {tab === "programmes" ? (
+                <ProgrammeEditor programmes={programmes} screens={screens} catalogue={catalogue} images={slides}
+                  savedIds={new Set(playlist.programmes.map(({ id }) => id))}
+                  onChange={({ programmes: nextProgrammes, screens: nextScreens }) => {
+                    if (nextProgrammes) setProgrammes(nextProgrammes);
+                    if (nextScreens) setScreens(nextScreens);
+                    setDirty(true);
+                  }} />
+              ) : (
+                <>
+                  <p>Ces images peuvent être ajoutées à un diaporama. La case « Diffuser » s’applique aux écrans en mode automatique.</p>
+                  {slides.length === 0 && <p>Aucun visuel ajouté.</p>}
+                  <ol className={styles.list}>
                 {slides.map((slide, index) => (
                   <li className={styles.slide} key={slide.id}>
                     <div className={styles.preview} style={{ backgroundImage: `url("/api/diaporama/image/${slide.id}")` }} aria-hidden="true" />
@@ -127,9 +153,11 @@ export default function SlideshowEditor() {
                     </div>
                   </li>
                 ))}
-              </ol>
+                  </ol>
+                </>
+              )}
               <div className={styles.actions}>
-                <button className={styles.primary} type="submit" disabled={!dirty || busy}>Enregistrer le diaporama</button>
+                <button className={styles.primary} type="submit" disabled={!dirty || busy}>Enregistrer les changements</button>
                 {dirty && <button type="button" onClick={() => run(() => request())}>Annuler les modifications</button>}
               </div>
             </fieldset>

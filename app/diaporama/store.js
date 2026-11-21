@@ -6,23 +6,27 @@ const directory = process.env.SLIDESHOW_STATE_DIR || join(process.cwd(), ".slide
 const manifest = join(directory, "playlist.json");
 export const maxImageSize = 10 * 1024 * 1024;
 export const validImageId = /^[0-9a-f-]{36}\.(jpg|png)$/;
+export const programmeSlug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const screenDefaults = { horizontal: "auto", vertical: "auto" };
+
 export const orientations = ["horizontal", "vertical", "both"];
 let writes = Promise.resolve();
 
 export async function readPlaylist() {
+  const defaults = { revision: 0, slides: [], programmes: [], screens: screenDefaults };
   try {
-    return JSON.parse(await readFile(manifest, "utf8"));
+    return { ...defaults, ...JSON.parse(await readFile(manifest, "utf8")) };
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
-    return { revision: 0, slides: [] };
+    return defaults;
   }
 }
 
 function mutate(update) {
   const task = writes.then(async () => {
     const current = await readPlaylist();
-    const slides = await update(current);
-    const playlist = { revision: current.revision + 1, slides };
+    const changes = await update(current);
+    const playlist = { ...current, ...changes, revision: current.revision + 1 };
     const temp = join(directory, randomUUID() + ".tmp");
     await mkdir(directory, { recursive: true, mode: 0o700 });
     try {
@@ -64,7 +68,7 @@ export async function addImage(file) {
       await mkdir(directory, { recursive: true, mode: 0o700 });
       await writeFile(path, bytes, { flag: "wx", mode: 0o600 });
       created = true;
-      return [...slides, { id, title: file.name.replace(/\.[^.]*$/, "").slice(0, 120), duration: 8, active: false, orientation: "both" }];
+      return { slides: [...slides, { id, title: file.name.replace(/\.[^.]*$/, "").slice(0, 120), duration: 8, active: false, orientation: "both" }] };
     });
   } catch (error) {
     if (created) await rm(path, { force: true });
@@ -72,7 +76,7 @@ export async function addImage(file) {
   }
 }
 
-export async function savePlaylist(revision, slides) {
+export async function savePlaylist(revision, slides, programmes, screens, catalogue) {
   if (!Number.isInteger(revision) || !Array.isArray(slides)) throw new PlaylistError("Liste invalide.");
   let removed = [];
   const result = await mutate((current) => {
@@ -90,10 +94,61 @@ export async function savePlaylist(revision, slides) {
       return { id, title: title.trim(), duration, active, orientation };
     });
     removed = [...existing].filter((id) => !seen.has(id));
-    return next;
+    const savedProgrammes = programmes === undefined
+      ? current.programmes
+      : validateProgrammes(programmes, current.programmes, existing, catalogue);
+    if (savedProgrammes.some(({ items }) => items.some(({ kind, ref }) => kind === "image" && !seen.has(ref)))) {
+      throw new PlaylistError("Une image retirée figure encore dans un diaporama. Retire-la d’abord de la liste qui l’utilise.");
+    }
+    return {
+      slides: next,
+      programmes: savedProgrammes,
+      screens: validateScreens(screens ?? current.screens, savedProgrammes),
+    };
   });
   await Promise.allSettled(removed.map((id) => rm(join(directory, id), { force: true })));
   return result;
+}
+
+function validateProgrammes(programmes, previous, imageIds, catalogue) {
+  if (!Array.isArray(programmes) || programmes.length > 30) {
+    throw new PlaylistError("Tu peux enregistrer jusqu’à 30 diaporamas.");
+  }
+  const slugs = new Set();
+  const productRefs = new Set(catalogue.map(({ reference }) => reference));
+  const saved = new Map(previous.map(({ id, items }) => [id, new Set(items
+    .filter(({ kind }) => kind === "product").map(({ ref }) => ref))]));
+
+  return programmes.map((programme) => {
+    const { id, title, items, theme } = programme ?? {};
+    if (typeof id !== "string" || id.length > 80 || !programmeSlug.test(id) || slugs.has(id) ||
+      id === "auto" || id === "catalogue" || typeof title !== "string" || !title.trim() || title.length > 80 ||
+      !["standard", "noel"].includes(theme) || !Array.isArray(items) || items.length > 120) {
+      throw new PlaylistError("Vérifie le nom et le contenu de chaque diaporama.");
+    }
+    slugs.add(id);
+    const used = new Set();
+    const validated = items.map((item) => {
+      const { kind, ref, duration, active } = item ?? {};
+      const key = `${kind}:${ref}`;
+      const exists = kind === "product" ? (productRefs.has(ref) || saved.get(id)?.has(ref)) :
+        kind === "image" && imageIds.has(ref);
+      if (typeof ref !== "string" || !exists || used.has(key) || typeof active !== "boolean" ||
+        !Number.isInteger(duration) || duration < 2 || duration > 120) {
+        throw new PlaylistError("Vérifie les éléments du diaporama et leur durée (2 à 120 secondes).");
+      }
+      used.add(key);
+      return { kind, ref, duration, active };
+    });
+    return { id, title: title.trim(), theme, items: validated };
+  });
+}
+
+function validateScreens(screens, programmes) {
+  const choices = new Set(["auto", "catalogue", ...programmes.map(({ id }) => id)]);
+  const { horizontal, vertical } = screens ?? {};
+  if (!choices.has(horizontal) || !choices.has(vertical)) throw new PlaylistError("Choisis un diaporama valide pour chaque écran.");
+  return { horizontal, vertical };
 }
 
 export async function readImage(id) {

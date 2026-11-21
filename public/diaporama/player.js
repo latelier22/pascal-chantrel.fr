@@ -4,6 +4,7 @@
   var empty = document.getElementById("empty");
   var button = document.getElementById("fullscreen");
   var orientation = document.body.getAttribute("data-orientation");
+  var selection = /(?:^|[?&])diapo=([a-z0-9-]+)(?:&|$)/.exec(window.location.search);
   var list = [];
   var content;
   var index = 0;
@@ -37,14 +38,18 @@
 
   function productSlide(slide, image) {
     var element = document.createElement("article");
-    element.className = "slide christmas-slide";
+    element.className = "slide christmas-slide" + (slide.theme === "standard" ? " standard-slide" : "");
     var content = addText(element, "div", "christmas-content", "");
     var brand = addText(content, "p", "christmas-brand", "Pascal Chantrel");
-    addText(brand, "span", "christmas-label", "Sélection de Noël");
+    addText(brand, "span", "christmas-label", slide.heading || "Sélection de Noël");
 
     var photo = addText(content, "div", "christmas-photo", "");
-    image.alt = "";
-    photo.appendChild(image);
+    if (image) {
+      image.alt = "";
+      photo.appendChild(image);
+    } else {
+      addText(photo, "p", "product-no-photo", "Photo à venir");
+    }
 
     var copy = addText(content, "div", "christmas-copy", "");
     addText(copy, "p", "christmas-category", slide.category);
@@ -80,10 +85,10 @@
       }
     }
 
-    image.onload = function () {
+    function display(loaded) {
       if (ticket !== generation) return;
       window.clearTimeout(loading);
-      var element = slide.kind === "product" ? productSlide(slide, image) : imageSlide(slide);
+      var element = slide.kind === "product" ? productSlide(slide, loaded) : imageSlide(slide);
       screen.appendChild(element);
       if (visible) screen.removeChild(visible);
       visible = element;
@@ -91,11 +96,18 @@
       index = position;
       if (list.length > 1) {
         var next = (index + 1) % list.length;
-        preload = new Image();
-        preload.src = list[next].url;
+        if (list[next].url) {
+          preload = new Image();
+          preload.src = list[next].url;
+        }
         schedule(function () { show(next, list.length); }, slide.duration * 1000);
       }
-    };
+    }
+    if (slide.kind === "product" && !slide.url) {
+      display(null);
+      return;
+    }
+    image.onload = function () { display(image); };
     image.onerror = failed;
     loading = window.setTimeout(failed, 9000);
     image.src = slide.url;
@@ -103,13 +115,13 @@
 
   function refresh() {
     var request = new XMLHttpRequest();
-    request.open("GET", "/api/diaporama?orientation=" + orientation);
+    request.open("GET", "/api/diaporama?orientation=" + orientation + (selection ? "&diapo=" + selection[1] : ""));
     request.timeout = 9000;
     request.onload = function () {
       try {
         if (request.status !== 200) return;
         var playlist = JSON.parse(request.responseText);
-        var nextContent = JSON.stringify(playlist.slides);
+        var nextContent = JSON.stringify([playlist.slides, playlist.message]);
         if (nextContent === content) return;
         content = nextContent;
         list = playlist.slides;
@@ -120,6 +132,7 @@
         } else {
           if (visible) screen.removeChild(visible);
           visible = null;
+          empty.querySelector("p").textContent = playlist.message || "Aucun visuel à diffuser.";
           empty.style.display = "block";
         }
       } catch (error) {
