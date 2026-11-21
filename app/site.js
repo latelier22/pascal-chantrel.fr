@@ -10,8 +10,8 @@ export const site = {
   codePostal: "22600",
   ville: "LOUDEAC",
   email: "contact@pascal-chantrel.fr",
-  logo: { url: "images/logo-barre-du-haut.png", alt: "logo Pascal CHANTREL" },
-  Logo: { url: "images/logo-banniere.png", alt: "logo Pascal CHANTREL" },
+  logo: { url: "/images/logo-barre-du-haut.png", alt: "logo Pascal CHANTREL" },
+  Logo: { url: "/images/logo-banniere.png", alt: "logo Pascal CHANTREL" },
   facebook: "https://www.facebook.com/profile.php?id=61556770660190"
 };
 
