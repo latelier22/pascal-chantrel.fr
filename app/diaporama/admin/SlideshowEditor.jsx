@@ -94,6 +94,7 @@ export default function SlideshowEditor() {
         <Link href="/diaporama/horizontal" target="_blank">Écran horizontal (16:9)</Link>
         <Link href="/diaporama/vertical" target="_blank">Écran vertical (9:16)</Link>
       </nav>
+      <p>La sélection de Noël du catalogue s’affiche sur chaque écran tant qu’aucun visuel personnalisé n’y est activé.</p>
       {feedback && <p className={styles.feedback} role={feedback.error ? "alert" : "status"}>{feedback.text}</p>}
       {!playlist ? (
         busy ? <p>Chargement…</p> : <button type="button" onClick={() => run(() => request())}>Réessayer</button>

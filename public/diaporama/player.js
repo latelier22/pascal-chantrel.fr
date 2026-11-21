@@ -18,6 +18,51 @@
     timer = window.setTimeout(fn, delay);
   }
 
+  function addText(parent, tag, name, text) {
+    var element = document.createElement(tag);
+    element.className = name;
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+  }
+
+  function imageSlide(slide) {
+    var element = document.createElement("div");
+    element.className = "slide";
+    element.setAttribute("role", "img");
+    element.setAttribute("aria-label", slide.title || "Visuel du magasin");
+    element.style.backgroundImage = 'url("' + slide.url + '")';
+    return element;
+  }
+
+  function productSlide(slide, image) {
+    var element = document.createElement("article");
+    element.className = "slide christmas-slide";
+    var content = addText(element, "div", "christmas-content", "");
+    var brand = addText(content, "p", "christmas-brand", "Pascal Chantrel");
+    addText(brand, "span", "christmas-label", "Sélection de Noël");
+
+    var photo = addText(content, "div", "christmas-photo", "");
+    image.alt = "";
+    photo.appendChild(image);
+
+    var copy = addText(content, "div", "christmas-copy", "");
+    addText(copy, "p", "christmas-category", slide.category);
+    addText(copy, "h1", "christmas-title", slide.title);
+    addText(copy, "p", "christmas-reference", slide.reference);
+    if (slide.feature || slide.energy) {
+      var traits = addText(copy, "ul", "christmas-traits", "");
+      if (slide.feature) addText(traits, "li", "", slide.feature);
+      if (slide.energy) addText(traits, "li", "", slide.energy);
+    }
+    addText(copy, "p", "christmas-price", slide.price);
+
+    var progress = addText(element, "div", "christmas-progress", "");
+    progress.setAttribute("aria-hidden", "true");
+    progress.style.animationDuration = slide.duration + "s";
+    return element;
+  }
+
   function show(position, remaining) {
     var slide = list[position];
     var ticket = ++generation;
@@ -38,11 +83,7 @@
     image.onload = function () {
       if (ticket !== generation) return;
       window.clearTimeout(loading);
-      var element = document.createElement("div");
-      element.className = "slide";
-      element.setAttribute("role", "img");
-      element.setAttribute("aria-label", slide.title || "Visuel du magasin");
-      element.style.backgroundImage = 'url("' + slide.url + '")';
+      var element = slide.kind === "product" ? productSlide(slide, image) : imageSlide(slide);
       screen.appendChild(element);
       if (visible) screen.removeChild(visible);
       visible = element;

@@ -93,3 +93,9 @@ Le dossier doit être accessible en écriture par le service Next.js et rester
 en dehors des versions de déploiement. En local, il vaut `.slideshow/` par
 défaut. En production, la configuration Nginx doit autoriser les envois de
 plus de 10 Mo avec leur enveloppe multipart sur `/diaporama/admin/api`.
+
+Quand aucun visuel personnalisé n’est actif pour un écran, celui-ci affiche
+la sélection de Noël générée depuis les produits photographiés et disponibles
+du catalogue. Les prix suivent le catalogue et chaque produit reste affiché
+sept secondes. Un visuel personnalisé actif remplace cette sélection sur
+l’écran auquel il est affecté.
